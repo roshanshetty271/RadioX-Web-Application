@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: Doctor Connect API
+  description: REST API for connecting doctors with patient information and medical imaging
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /getallpatientinformation:
+    get:
+      summary: Get all patient data pending for viewing medical imaging
+      operationId: GetAllPatientData
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientInformation'
+        '401':
+          description: Unauthenticated request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /getpatientinfo/{id}:
+    get:
+      summary: Get  information of a specific patient by ID
+      operationId: GetPatientInfo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the patient to get information
+          example: 123
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientInformation'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /getscans/{id}:
+    get:
+      summary: Fetch medical body scans by patient ID
+      operationId: GetMedicalScans
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the patient to fetch medical scans
+          example: 123
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            image/png:
+
+              schema:
+                type: string
+                format: binary
+                $ref: '#/components/schemas/MedicalScans'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /publishreports/{id}:
+    post:
+      summary: Post or update medical reports for a patient
+      operationId: PublishReports
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the patient to post reports
+          example: 123
+          schema:
+            type: string
+            format: binary
+      requestBody:
+        required: true
+        content:
+          application/pdf:
+            example:
+              reportType: "MRI Scan"
+              findings: "No abnormalities detected"
+      responses:
+        '200':
+          description: Successful publication/update
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    PatientInformation:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: string
+        contactNumber:
+          type: string
+        urgency:
+            type: string
+        dateoftest:
+          type: string
+          format: date    
+    MedicalScans:
+      type: object
+      properties:
+        scanType:
+          type: string
+        result:
+          type: string
+    Message:
+      type: object
+      properties:
+        message:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
