@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: RadioX Health Portal API
-  description: REST API for patient registration, login, appointment scheduling, and medical report viewing
+  description: REST API for patient registration, login, appointment scheduling, and medical report viewing, Patient deletion, Add, Delete and update details of Doctor, Bill Generation
   version: 1.0.0
 
 servers:
@@ -309,112 +309,112 @@ paths:
             application/json:
               example:
                 error: "Medical report not found"
-  /getallpatientinformation:
-    get:
-      summary: Get all patient data pending for viewing medical imaging
-      operationId: GetAllPatientData
-      responses:
-        '200':
-          description: Successful retrieval
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PatientInformation'
-        '401':
-          description: Unauthenticated request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
 
-  /getpatientinfo/{id}:
-    get:
-      summary: Get  information of a specific patient by ID
-      operationId: GetPatientInfo
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: ID of the patient to get information
-          example: 123
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successful retrieval
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PatientInformation'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-  /getscans/{id}:
-    get:
-      summary: Fetch medical body scans by patient ID
-      operationId: GetMedicalScans
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: ID of the patient to fetch medical scans
-          example: 123
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successful retrieval
-          content:
-            image/png:
-
-              schema:
-                type: string
-                format: binary
-                $ref: '#/components/schemas/MedicalScans'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-
-  /publishreports/{id}:
+  /doctors:
     post:
-      summary: Post or update medical reports for a patient
-      operationId: PublishReports
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: ID of the patient to post reports
-          example: 123
-          schema:
-            type: string
-            format: binary
+      summary: Add a new doctor
+      operationId: AddDoctor
       requestBody:
         required: true
         content:
-          application/pdf:
+          application/json:
             example:
-              reportType: "MRI Scan"
-              findings: "No abnormalities detected"
+              name: "Dr. Smith"
+              specialty: "Cardiology"
+              contactNumber: +123456789
+              address: "Jamaica Plain" 
       responses:
-        '200':
-          description: Successful publication/update
+        '201':
+          description: Successful addition
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Message'
+              example:
+                message: "Doctor added successfully"
+
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+                example:
+                    message: "Error while adding Doctor details"
+            
+        
+
+  /doctors/{id}:
+    delete:
+      summary: Delete a doctor by ID
+      operationId: DeleteDoctor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the doctor to delete
+          example: 456
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful deletion
+          content:
+            application/json:
+              example:
+                message: "Doctor successfully deleted"
         '404':
           description: Not Found
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error'              
+              example:
+                message: "Doctor not found"
+
+    put:
+      summary: Update details of a doctor by ID
+      operationId: UpdateDoctor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the doctor to update
+          example: 456
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              name: "Dr. Johnson"
+              specialty: "Dermatology"
+      responses:
+        '200':
+          description: Successful update
+          content:
+            application/json:
+              example:
+                message: "Doctor details updated successfully"
+        '404':
+          description: Not Found
+          content:
+            application/json:
+             example:
+                message: "Doctor not found"
+
+  /generatebill:
+    post:
+      summary: Generate a bill
+      operationId: GenerateBill
+      responses:
+        '200':
+          description: Successful bill generation
+          content:
+            application/json:
+              example:
+                message: "Bill generated successfully"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                message: "Error while generatiing bill"
 
 components:
   schemas:
@@ -432,7 +432,7 @@ components:
         contactNumber:
           type: string
         urgency:
-            type: string
+          type: string
         dateoftest:
           type: string
           format: date
@@ -447,9 +447,30 @@ components:
         scanType:
           type: string
         result:
-          type: string         
+          type: string
     Error:
       type: object
       properties:
         error:
+          type: string
+    Doctor:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        specialty:
+          type: string
+          address:
+            type: string
+            contactNumber: 
+             type: string
+    Bill:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: float
+        description:
           type: string
