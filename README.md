@@ -65,6 +65,10 @@ Effortlessly upload medical images and scans for a specific patient, facilitatin
 ## Documentation
 - Explore detailed API specifications for each module in the docs directory. The documentation provides insights into request methods, request bodies, response formats, error responses, and required schemas.
 
+## Objectmodel 
+![Object Model](https://github.com/info-6150-fall-2023/final-project-raps/assets/144941047/98cdb8b2-943b-4f7b-bd68-232d5623e11d)
+
+
 ## Contributors
 - Aayush Shetty (shetty.aayu@northeastern.edu)
 - Roshan Shetty (shetty.ros@northeastern.edu)
