@@ -1,10 +1,10 @@
 import express from 'express';
-import initializeRoutes from './app/routes/index.js';
+import initialize from './app/app.js';
 
 const app = express();
-const port = 3000;
+const port = 3000; // Hard-coded port
 
-initializeRoutes(app);
+initialize(app);
 
 app.listen(port, () => {
     console.log(`Server is listening at port ${port}`);
