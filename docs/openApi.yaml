@@ -191,13 +191,13 @@ paths:
 
   /patientregistration/delete/{id}:
     delete:
-      summary: Delete a patient by ID
-      operationId: DeletePatient
+      summary: Delete a patient appointment by ID
+      operationId: DeletePatientAppointment
       parameters:
         - name: id
           in: path
           required: true
-          description: ID of the patient to be deleted
+          description: Appointment of the patient to be deleted by using ID of the patient.
           example: 123
           schema:
             type: integer
@@ -207,7 +207,7 @@ paths:
           content:
             application/json:
               example:
-                message: "Patient deleted successfully"
+                message: "Patient appointment deleted successfully"
         '404':
           description: Not Found
           content:
