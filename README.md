@@ -24,9 +24,9 @@ Retrieve comprehensive information about a specific patient, including personal 
 
 Seamlessly update existing patient details, ensuring accurate and up-to-date records.
 
-#### Delete Patient
+#### Delete Patient Appointment
 
-Efficiently remove patients from the system when necessary, adhering to data privacy and compliance standards.
+Efficiently remove patient appointments from the system when necessary, adhering to data privacy and compliance standards.
 
 ### Appointment Scheduling
 
