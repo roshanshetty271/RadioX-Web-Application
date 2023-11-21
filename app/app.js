@@ -8,16 +8,13 @@ import billRoutes from './routes/bill-routes.js';
 //import registerRouter from './routes/index.js'
 //import models from './models/index.js'
 
-const app = express();
-const PORT = 3000;
+const initialize = (app) => {
 
-initialize(app);
+    app.use(cors())
+    app.use(express.json())
+    app.use(express.urlencoded())
+    mongoose.connect('mongodb+srv://shettyaayu:CAw8PmtbGCabGGZN@cluster0.7yywkny.mongodb.net/MasterDb?retryWrites=true&w=majority')
+    registerRouter(app)
+}
 
-app.use('/patientDelete', patientRoutes);
-app.use('/doctors', doctorRoutes);
-app.use('/generatebill', billRoutes);
-mongoose.connect('mongodb+srv://shettyaayu:CAw8PmtbGCabGGZN@cluster0.7yywkny.mongodb.net/MasterDb?retryWrites=true&w=majority')
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+export default initialize
