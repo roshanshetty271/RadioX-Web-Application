@@ -17,6 +17,7 @@ paths:
         content:
           application/json:
             example:
+              patientID: "12345"
               serviceName: "ECG"
               date: "2023-11-15"
               time: "14:00"
