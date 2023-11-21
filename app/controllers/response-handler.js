@@ -4,9 +4,11 @@ export const setResponse = (data, response) => {
 }
 
 export const setErrorResponse = (err, response) => {
-    response.status(500)
-            .json({
-                code: "ServiceError",
-                message: "Error occured while processing your request"
-            })
+    // response.status(500)
+    //         .json({
+    //             code: "ServiceError",
+    //             message: "Error occured while processing your request"
+    //         })
+
+    response.status(500).json(err)
 }
