@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "final-project-raps",
   "version": "1.0.0",
   "description": "Welcome to RadioX Web Application, a state-of-the-art web application aimed at transforming healthcare management. RadioX is designed to enhance the patient experience, streamline administrative tasks, and provide healthcare professionals with efficient tools for patient care.",
@@ -14,31 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "express": "^4.18.2",
     "mongoose": "^8.0.1"
   }
 }
-=======
-    "type": "module",
-    "name": "final-project-raps",
-    "version": "1.0.0",
-    "description": "Welcome to RadioX Web Application, a state-of-the-art web application aimed at transforming healthcare management. RadioX is designed to enhance the patient experience, streamline administrative tasks, and provide healthcare professionals with efficient tools for patient care.",
-    "main": "Patient-RestApi.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.20.2",
-        "cors": "^2.8.5",
-        "debug": "^4.3.4",
-        "dotenv": "^16.3.1",
-        "express": "^4.18.2",
-        "mongoose": "^8.0.1"
-    }
-}
->>>>>>> cfae4679e302a2c9e960eb536b8fc4c3b9c20171
