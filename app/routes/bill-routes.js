@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const billController = require('../controllers/bill-controller');
+import { generateBill } from '../controllers/bill-controller.js';
 
-router.post('/', billController.generateBill);
+router.post('/', generateBill); 
 
-module.exports = router;
+export default router;

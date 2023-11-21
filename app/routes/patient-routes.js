@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const patientController = require('../controllers/patient-controller');
+import * as patientController from '../controllers/patient-controller.js';
 
 router.delete('/delete/:id', patientController.deletePatient);
 
-module.exports = router;
+export default router;

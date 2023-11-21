@@ -1,7 +1,12 @@
-const responseHandler = require('./response-handles');
+import * as patientService from '../services/patient-service.js';
+import { setResponse, setErrorResponse } from './response-handler.js';
 
-exports.deletePatient = (req, res) => {
-  // Implementation to delete a patient by ID
-  // Use the responseHandler for consistent responses
-  responseHandler.sendSuccess(res, "Patient deleted successfully");
+export const deletePatient = async (req, res) => {
+    try {
+        const id = req.params.id; // Assuming the patient ID is in the request parameters
+        const result = await patientService.deleteById(id);
+        setResponse(result, res);
+    } catch (err) {
+        setErrorResponse(err, res);
+    }
 };

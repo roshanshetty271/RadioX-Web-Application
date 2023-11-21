@@ -1,7 +1,11 @@
-import express from 'express'
-import initialize from './app/app.js'
+import express from 'express';
+import initializeRoutes from './app/routes/index.js';
 
-const app = express()
-const port = 3000
-initialize(app)
-app.listen(3000, () => console.log(`Server is listening at port ${port}`))
+const app = express();
+const port = 3000;
+
+initializeRoutes(app);
+
+app.listen(port, () => {
+    console.log(`Server is listening at port ${port}`);
+});

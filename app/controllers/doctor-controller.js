@@ -1,19 +1,32 @@
-const responseHandler = require('./response-handles');
+import { setResponse, setErrorResponse } from './response-handler.js';
 
-exports.addDoctor = (req, res) => {
-  // Implementation to add a new doctor
-  // Use the responseHandler for consistent responses
-  responseHandler.sendSuccess(res, "Doctor added successfully");
+export const addDoctor = async (request, response) => {
+    try {
+        const newDoctor = { ...request.body };
+        const doctor = await doctorService.save(newDoctor);
+        setResponse(doctor, response);
+    } catch (err) {
+        setErrorResponse(err, response);
+    }
 };
 
-exports.deleteDoctor = (req, res) => {
-  // Implementation to delete a doctor by ID
-  // Use the responseHandler for consistent responses
-  responseHandler.sendSuccess(res, "Doctor successfully deleted");
+export const deleteDoctor = async (request, response) => {
+    try {
+        const id = request.params.id;
+        const result = await doctorService.deleteById(id);
+        setResponse(result, response);
+    } catch (err) {
+        setErrorResponse(err, response);
+    }
 };
 
-exports.updateDoctor = (req, res) => {
-  // Implementation to update details of a doctor by ID
-  // Use the responseHandler for consistent responses
-  responseHandler.sendSuccess(res, "Doctor details updated successfully");
+export const updateDoctor = async (request, response) => {
+    try {
+        const id = request.params.id;
+        const updatedDoctor = { ...request.body };
+        const result = await doctorService.updateById(id, updatedDoctor);
+        setResponse(result, response);
+    } catch (err) {
+        setErrorResponse(err, response);
+    }
 };
