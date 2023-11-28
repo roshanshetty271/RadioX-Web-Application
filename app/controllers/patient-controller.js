@@ -10,11 +10,6 @@ export const deletePatientById = async (req, res) => {
         setErrorResponse(err, res);
     }
 };
-// app/controllers/patient-controller.js
-
-import * as patientService from '../services/patient-service.js';
-import { setErrorResponse, setResponse } from './response-handles.js';
-
 /**
  * Controller function to handle patient registration.
  * @param {Object} req - Express request object.

@@ -6,9 +6,9 @@ const router = express.Router()
 
 router.route('/appointmentSchedule').post(appointmentController.post)
 
-// router.route('/:id')
-//     .get(appointmentController.get)
-//     .put(appointmentController.put)
-//     .delete(appointmentController.remove)
+router.route('/:id')
+ .get(appointmentController.get)
+ .put(appointmentController.put)
+ .delete(appointmentController.remove)
 
 export default router

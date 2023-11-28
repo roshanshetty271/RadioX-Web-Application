@@ -1,14 +1,11 @@
-import Appointment from './appointment.js'
+import * as patientService from './patient-service.js';
+import * as doctorService from './doctor-service.js'; 
+import * as appointmentService from './appointment-service.js';
+import * as medicalReportService from './medical-report-service.js';
 
 export default {
-    Appointment
-}
-// models/index.js
-
-import Appointment from './appointment.js';
-import MedicalReport from './medical-report.js';
-
-export {
-    Appointment,
-    MedicalReport
+    patientService,
+    doctorService, 
+    appointmentService,
+    medicalReportService,
 };

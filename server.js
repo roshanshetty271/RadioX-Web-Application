@@ -1,11 +1,8 @@
-import express from 'express';
-import initialize from './app/app.js';
+// server.js
+import app from './app/app.js'; 
 
-const app = express();
-const port = 3000; // Hard-coded port
-
-initialize(app);
-
-app.listen(port, () => {
-    console.log(`Server is listening at port ${port}`);
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

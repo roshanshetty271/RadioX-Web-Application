@@ -1,4 +1,4 @@
-// app/routes/patient-routes.js
+
 
 import express from 'express';
 import * as patientController from '../controllers/patient-controller.js';
