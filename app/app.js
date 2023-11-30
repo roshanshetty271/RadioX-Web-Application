@@ -47,5 +47,16 @@ mongoose.connect(mongoDBURI, {
 initializeRoutes(app);
 registerRoutes(app);
 
-// Export the Express app
-export default app;
+    // Connection error
+    db.on('error', (err) => {
+        console.error(`MongoDB connection error: ${err}`);
+    });
+
+    // Disconnected
+    db.on('disconnected', () => {
+        console.log('MongoDB connection disconnected');
+    });
+
+    registerRoutes(app);
+
+export default initialize;

@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 // response-handler.js
+=======
+
+
+export const setResponse = (data, response) => {
+    response.status(200)
+            .json(data)
+}
+>>>>>>> 0fb6927865a35e6ec76e2b7712cb42aae9f6f0cb
 
 /**
  * Function to set a success response.

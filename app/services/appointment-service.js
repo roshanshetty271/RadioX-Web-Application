@@ -1,30 +1,36 @@
 import Appointment from '../models/appointment.js'
+import mongoose from 'mongoose'
 
+export const search = async (params = {}) => {
+    const appointments = await Appointment.find(params).exec()
+    return appointments
+}
+
+export const update = async (updatedAppointment, id) => {
+    // try{
+
+    
+        const validObjectId = mongoose.Types.ObjectId.isValid(id);
+
+        console.log(validObjectId)
+
+        const appointment = await Appointment.findOneAndUpdate({_id : id}, updatedAppointment).exec()
+        console.log("appointment", appointment)
+        // if (!appointment) {
+        //     throw new Error('Appointment not found');
+        //   }
+        return appointment
+    // }
+    // catch(error){
+    //     console.log(error)
+    // }
+}
 
 export const save = async (newAppointment) => {
-    const course = new Appointment(newAppointment)
-    return course.save()
+    const appointment = new Appointment(newAppointment)
+    return appointment.save()
 }
-// services/appointment-service.js
 
-import Appointment from '../models/appointment.js';
-
-export const scheduleAppointment = async(newAppointment) => {
-    const appointment = new Appointment(newAppointment);
-    return await appointment.save();
-};
-
-export const cancelAppointment = async(appointmentId) => {
-    return await Appointment.findByIdAndDelete(appointmentId);
-};
-
-export const updateAppointment = async(appointmentId, updatedAppointment) => {
-    return await Appointment.findByIdAndUpdate(
-        appointmentId,
-        updatedAppointment, { new: true }
-    );
-};
-
-export const getAppointmentById = async(appointmentId) => {
-    return await Appointment.findById(appointmentId);
-};
+export const remove = async (id) => {
+    return await Appointment.findByIdAndDelete(id).exec()
+}
