@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const AppointmentSchema = new Schema({
+    appointmentID: {
+        type: String,
+        required: true
+    },
     patientID: {
         type: String,
         required: true
@@ -45,7 +49,15 @@ const AppointmentSchema = new Schema({
         },
         lastName: {
             type: String
+<<<<<<< HEAD
         }
+=======
+        }   
+    },
+    status: {
+        type: String,
+        required: true
+>>>>>>> e67115be88a786f172adcccb12f318fc6356503c
     }
 });
 
