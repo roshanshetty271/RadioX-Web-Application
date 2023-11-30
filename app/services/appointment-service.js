@@ -1,20 +1,16 @@
 import Appointment from '../models/appointment.js'
 import mongoose from 'mongoose'
 
-export const search = async (params = {}) => {
-    const appointments = await Appointment.find(params).exec()
+export const search = async (id) => {
+    const appointments = await Appointment.findOne({appointmentID : id}).exec()
     return appointments
 }
 
 export const update = async (updatedAppointment, id) => {
     // try{
 
-    
-        const validObjectId = mongoose.Types.ObjectId.isValid(id);
 
-        console.log(validObjectId)
-
-        const appointment = await Appointment.findOneAndUpdate({_id : id}, updatedAppointment).exec()
+        const appointment = await Appointment.findOneAndUpdate({appointmentID : id}, updatedAppointment).exec()
         console.log("appointment", appointment)
         // if (!appointment) {
         //     throw new Error('Appointment not found');
@@ -31,6 +27,9 @@ export const save = async (newAppointment) => {
     return appointment.save()
 }
 
-export const remove = async (id) => {
-    return await Appointment.findByIdAndDelete(id).exec()
+export const remove = async (id, body) => {
+    await Appointment.updateOne(
+        {appointmentID: id},
+        {$set : body}
+        ).exec()
 }
