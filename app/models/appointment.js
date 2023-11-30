@@ -49,15 +49,11 @@ const AppointmentSchema = new Schema({
         },
         lastName: {
             type: String
-<<<<<<< HEAD
-        }
-=======
         }   
     },
     status: {
         type: String,
         required: true
->>>>>>> e67115be88a786f172adcccb12f318fc6356503c
     }
 });
 

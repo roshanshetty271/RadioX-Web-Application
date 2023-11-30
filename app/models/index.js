@@ -5,7 +5,7 @@ import * as medicalReportService from './medical-report-service.js';
 import Appointment from './appointment.js'
 import ReportModel from './report.js'
 import MedicalReport from './medical-report.js';
-
+import Patient from './patient.js';
 
 export default {
     patientService,
@@ -14,5 +14,6 @@ export default {
     medicalReportService,
     Appointment,
     ReportModel,
-    MedicalReport
+    MedicalReport,
+    Patient,
 }
