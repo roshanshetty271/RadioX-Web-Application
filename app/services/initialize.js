@@ -8,7 +8,7 @@ import billRoutes from '../routes/bill-routes.js';
 const initializeRoutes = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use('/api', doctorRoutes);
+  app.use('/', doctorRoutes);
   app.use('/api', patientRoutes);
   app.use('/api', billRoutes);
 

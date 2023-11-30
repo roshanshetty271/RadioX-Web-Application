@@ -8,7 +8,8 @@ export const addDoctor = async (doctorData) => {
     await doctor.save();
     return { message: 'Doctor added successfully' };
   } catch (error) {
-    throw new Error('Error while adding Doctor details: ' + error.message);
+    console.error('Error while adding Doctor details:', error.message);
+    throw new Error('Error while adding Doctor details');
   }
 };
 
@@ -16,12 +17,15 @@ export const deleteDoctorById = async (id) => {
   try {
     const result = await Doctor.findByIdAndDelete(id);
     if (result) {
+      console.log('Doctor successfully deleted');
       return { message: 'Doctor successfully deleted' };
     } else {
+      console.log('Doctor not found');
       throw new Error('Doctor not found');
     }
   } catch (error) {
-    throw new Error('Error while deleting Doctor: ' + error.message);
+    console.error('Error while deleting Doctor:', error.message);
+    throw new Error('Error while deleting Doctor');
   }
 };
 
@@ -36,9 +40,7 @@ export const updateDoctorById = async (id, updatedDoctor) => {
 
     if (result) {
       console.log('Doctor details updated successfully');
-     
       console.log('Updated Doctor:', result);
-
       return { message: 'Doctor details updated successfully' };
     } else {
       console.log('Doctor not found');

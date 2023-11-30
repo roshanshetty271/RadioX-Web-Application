@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import mongoose from 'mongoose';
-=======
-import mongoose from 'mongoose'
->>>>>>> 0fb6927865a35e6ec76e2b7712cb42aae9f6f0cb
 
 const Schema = mongoose.Schema;
 
@@ -15,11 +11,7 @@ const AppointmentSchema = new Schema({
         type: String,
         required: true
     },
-<<<<<<< HEAD
     date: {
-=======
-    date: {        
->>>>>>> 0fb6927865a35e6ec76e2b7712cb42aae9f6f0cb
         type: String,
         required: true
     },
@@ -38,11 +30,7 @@ const AppointmentSchema = new Schema({
         required: true
     },
     patientName: {
-<<<<<<< HEAD
         firstName: {
-=======
-        firstName:{
->>>>>>> 0fb6927865a35e6ec76e2b7712cb42aae9f6f0cb
             type: String,
             required: true
         },
@@ -57,7 +45,6 @@ const AppointmentSchema = new Schema({
         },
         lastName: {
             type: String
-<<<<<<< HEAD
         }
     }
 });
@@ -65,16 +52,3 @@ const AppointmentSchema = new Schema({
 const AppointmentModel = mongoose.model('Appointment', AppointmentSchema);
 
 export default AppointmentModel;
-=======
-        }   
-    }
-
-},
-// {
-//     versionKey: false
-// }
-)
-
-const AppointmentModel = mongoose.model('appointment', AppointmentSchema)
-export default AppointmentModel
->>>>>>> 0fb6927865a35e6ec76e2b7712cb42aae9f6f0cb

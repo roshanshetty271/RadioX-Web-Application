@@ -10,5 +10,4 @@ export default (app) => {
     app.use('/patients', patientRoutes);
     app.use('/doctors', doctorRoutes);
     app.use('/generatebill', billRoutes);
-};
 }

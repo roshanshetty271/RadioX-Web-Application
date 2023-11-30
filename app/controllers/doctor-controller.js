@@ -1,3 +1,4 @@
+// ./app/controllers/doctor-controller.js
 import * as doctorService from '../services/doctor-service.js';
 import { setErrorResponse, setResponse } from './response-handler.js';
 
@@ -13,15 +14,14 @@ export const registerDoctor = async (req, res) => {
 
 export const updateDoctor = async (req, res) => {
     try {
-      const doctorId = req.params.id;
-      const updatedDoctorData = { ...req.body };
-      const result = await doctorService.updateDoctorById(doctorId, updatedDoctorData);
-      console.log(result); 
-      setResponse(result, res);
+        const doctorId = req.params.id;
+        const updatedDoctorData = { ...req.body };
+        const result = await doctorService.updateDoctorById(doctorId, updatedDoctorData);
+        setResponse(result, res);
     } catch (error) {
-      setErrorResponse(error, res);
+        setErrorResponse(error, res);
     }
-  };
+};
 
 export const deleteDoctor = async (req, res) => {
     try {
@@ -70,7 +70,6 @@ export const doctorLogin = async (req, res) => {
         // Set a success response
         setResponse({ message: 'Doctor logged in successfully', doctor }, res);
     } catch (error) {
-        // Set an error response in case of an exception
         setErrorResponse(error, res);
     }
 };
