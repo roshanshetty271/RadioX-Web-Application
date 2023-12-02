@@ -1,7 +1,7 @@
-import express from "express";
-import initialize from "./app/app.js";
+import express from 'express'
+import initialize from './backend/app/app.js'
 
 const app = express()
-const port = 4000
+const port = 8000
 initialize(app)
-app.listen(4000, () => console.log(`Server is listening at port ${port}`))
+app.listen(port, () => console.log(`Server is listening at port ${port}`))
