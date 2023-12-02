@@ -20,37 +20,37 @@ const Products: React.FC = () => {
                     <div className='product-boxes'>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>Chest X-Ray</p>
+                                <p>Chest Radiography</p>
                             </div>
                             <img src={chestXRay} alt="chestXRay" />                                    
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>TB Care</p>
+                                <p>Posterior-Anterior</p>
                             </div>
                             <img src={tbCare} alt="tbCare" />                                         
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>chest</p>
+                                <p>Computed Tomography</p>
                             </div>                            
                             <img src={lungNodule} alt="xRay" />             
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>chest</p>
+                                <p>Cerebro Vascular</p>
                             </div>
                             <img src={strokeTBI} alt="strokeTBI" />                 
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>chest</p>
+                                <p>MII X-Ray</p>
                             </div>
                             <img src={legXRay} alt="legXRay" />                                          
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>chest</p>
+                                <p>Coronary Angiogram</p>
                             </div>
                             <img src={heartFailure} alt="heartFailure" />
                         </div>
