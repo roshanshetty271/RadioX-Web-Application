@@ -39,6 +39,7 @@ p{
     position: absolute;
     right: 0;
     border-radius: 0 10px 10px 0;
+    opacity: 0.4;
 }
 
 .overlay{
@@ -55,11 +56,11 @@ p{
 }
 
 .overlay p{
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.2rem;
     margin-left: 1rem;
-    color: #008280;
-    width: 50%;
+    color: #ffffff;
+    width: 55%;
     word-wrap: break-word;
 }
 

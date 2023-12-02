@@ -1,16 +1,14 @@
-import productSkeleton from '../images/productSkeleton.svg'
+import productSkeleton from '../../../images/productSkeleton.svg'
 import "./products.css"
-import chestXRay from "../images/x-ray.jpg"
-import legXRay from "../images/leg x-ray.jpg"
-import heartFailure from "../images/heart failure.jpg"
-import strokeTBI from "../images/stroke&TBI.jpg"
-import tbCare from "../images/TB Care.jpg"
-import lungNodule from "../images/lung nodule.jpg"
-
+import chestXRay from "../../../images/x-ray.jpg"
+import legXRay from "../../../images/leg x-ray.jpg"
+import heartFailure from "../../../images/heart failure.jpg"
+import strokeTBI from "../../../images/stroke&TBI.jpg"
+import tbCare from "../../../images/TB Care.jpg"
+import lungNodule from "../../../images/lung nodule.jpg"
 
 
 const Products: React.FC = () => {
-
 
     return (
         <div className="parentContainer">
@@ -38,7 +36,7 @@ const Products: React.FC = () => {
                         </div>
                         <div className="product-box">
                             <div className="overlay">
-                                <p>Cerebro Vascular</p>
+                                <p>CerebroVascular</p>
                             </div>
                             <img src={strokeTBI} alt="strokeTBI" />                 
                         </div>
