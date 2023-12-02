@@ -1,0 +1,67 @@
+.impact-section {
+    display: flex;
+    background-color: rgb(11, 36, 52);
+    justify-content: space-between;
+    margin: 60px 0;
+}
+
+.impact-block1,
+.impact-block2,
+.impact-block3 {
+    flex: 1;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.impact-block1 span,
+.impact-block2 span,
+.impact-block3 span {
+    font-size: 40px;
+    color: rgb(233, 116, 99);
+    margin-bottom: 0;
+    text-align: left;
+    display: block;
+}
+
+.impact-block1 p,
+.impact-block2 p,
+.impact-block3 p {
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.impact-block1 a,
+.impact-block2 a,
+.impact-block3 a {
+    display: block;
+    color: rgb(233, 116, 99);
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+.impact-section {
+    display: flex;
+    background-color: rgb(11, 36, 52);
+    justify-content: space-around;
+    align-items: center;
+    margin: 60px 0;
+}
+
+.impact-block2 {
+    flex: 1;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.impact-block3 {
+    flex: 1;
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
