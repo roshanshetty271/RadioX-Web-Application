@@ -1,16 +1,24 @@
-import React from 'react'
+
 import Products from '../components/Home/Products/products'
+import Navbar from '../components/Home/NavBar/Navbar';
+import HeroPage from '../components/Home/Hero/Hero';
 import Stats from '../components/Home/Stats/stats'
 import Footer from '../components/Home/Footer/footer'
 
-function home() {
+const home = () => {
   return (
-    <div>
-    <Products/>
-    <Stats/>
+    <>
+      
+      <Navbar />
+      <HeroPage />
+      <Products/>
+      <Stats/>
     <Footer/>
-    </div>
-  )
-}
+      
+      {/* Add the rest of your application content here */}
+    </>
+  );
+};
 
-export default home
+export default home;
+
