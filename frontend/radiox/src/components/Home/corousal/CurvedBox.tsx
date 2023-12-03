@@ -1,15 +1,15 @@
 // CurvedBox.tsx
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './curvedBox.css';
-import assistance from '../images/assistance.jpeg';
-import collaborator from '../images/collaborator.jpeg';
-import support from '../images/support.jpeg';
+import assistance from '../../../images/assistance.jpeg';
+import collaborator from '../../../images/collaborator.jpeg';
+import support from '../../../images/support.jpeg';
 
 interface CurvedBoxProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const CurvedBox: React.FC<CurvedBoxProps> = ({ children }) => {
+const CurvedBox: React.FC = () => {
   return (
     <div className="container">
       {/* First Box */}

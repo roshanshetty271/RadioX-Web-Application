@@ -1,11 +1,11 @@
 // DoctorProfileSection.tsx
 import React from 'react';
 import './DoctorProfileSection.css'; 
-import radiology from '../images/Radiology.jpg';
-import cardiologist from '../images/cardiologist.jpg';
-import neurologist from '../images/neurologist.jpg';
+import radiology from '../../../images/Radiology.jpg';
+import cardiologist from '../../../images/cardiologist.jpg';
+import neurologist from '../../../images/neurologist.jpg';
 //import pediatrician from '../images/pediatrician .jpg';
-import ortho from '../images/ortho.jpg';
+import ortho from '../../../images/ortho.jpg';
 
 interface DoctorProfile {
   profilePicture: JSX.Element; 
