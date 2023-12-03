@@ -9,8 +9,7 @@ import Footer from '../components/Home/Footer/footer'
 
 const home = () => {
   return (
-    <>
-      
+    <>   
       <Navbar />
       <HeroPage />
       <Products/>

@@ -19,16 +19,18 @@ body {
   overflow: hidden;
   width: 700px;
   margin-right: 20px;
-  animation: moveLeftToRight 35s linear infinite; /* Continuous animation without hover */
+  animation: moveLeftToRight 40s linear infinite; /* Continuous animation without hover */
   transition: transform 0.5s ease-in-out; /* Added transition for smoother effects */
 }
 
+/* Added a more specific selector to pause the animation on hover */
 .profile-container:hover .profile {
   animation-play-state: paused; /* Pause the animation on hover */
 }
 
+/* Ensure animation stays paused when hovered */
 .profile-container.paused .profile {
-  animation-play-state: paused; /* Ensure animation stays paused when hovered */
+  animation-play-state: paused;
 }
 
 .profile-container:last-child {
@@ -58,10 +60,10 @@ body {
 
 @keyframes moveLeftToRight {
   0% {
-    transform: translateX(-550%);
+    transform: translateX(-410%);
   }
   100% {
-    transform: translateX(550%); /* Adjust the translation distance as needed */
+    transform: translateX(410%);
   }
 }
 
@@ -69,30 +71,42 @@ body {
   filter: none;
 }
 
+.name {
+  color: #0a0909;
+  font-size: 30px;
+  margin-bottom: 15px;
+  font-weight: bolder;
+}
+
 .specialty {
   color: #0a0909;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
+  font-weight: bolder;
 }
 
 .description {
   color: #0f0e0e;
-  font-size: 14px;
+  font-size: 22px;
   margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .blur {
   filter: blur(5px);
 }
 
+/* Pause the animation on selecting a doctor profile */
 .profile-container:active .profile {
-  animation-play-state: paused; /* Pause the animation on selecting a doctor profile */
+  animation-play-state: paused;
 }
 
+/* Highlight background color for selected profile */
 .profile-container.selected {
-  background-color: rgba(255, 255, 255, 0.9); /* Highlight background color for selected profile */
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
+/* Highlight background color for hovered profile */
 .profile.highlight {
-  background-color: rgba(255, 255, 255, 0.9); /* Highlight background color for hovered profile */
+  background-color: rgba(255, 255, 255, 0.9);
 }

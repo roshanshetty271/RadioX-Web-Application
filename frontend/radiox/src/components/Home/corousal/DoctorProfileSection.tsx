@@ -20,7 +20,7 @@ const DoctorProfileSection: React.FC = () => {
     { profilePicture: <img className="profile-image" src={cardiologist} alt="Dr. Michael Smith" />, name: 'Dr. Michael Smith', specialty: 'Dr. Michael Smith', description: 'Principal Investigator of CREATE Project in Hacettepe University, sponsored by AZ Turkey' },
     { profilePicture: <img className="profile-image" src={neurologist} alt="Dr. Sarah Adams" />, name: 'Dr. Sarah Adams', specialty: 'Dr. Sarah Adams', description: 'Consultant Radiologist, Clinical Lead for Diagnostics, Digital, and Innovation at Greater Manchester Cancer Alliance' },
     //{ profilePicture: <img className="profile-image" src={pediatrician} alt="Dr. Emily Johnson" />, name: 'Dr. Emily Johnson', specialty: 'Pediatrician', description: 'Dr. Emily Johnson, a compassionate pediatrician, specializes in the health and well-being of children. Dedicated to promoting growth and development, Dr. Johnson provides attentive care to young patients.' },
-    { profilePicture: <img className="profile-image" src={ortho} alt="Dr. Christopher Lee" />, name: 'Dr. Christopher Lee', specialty: 'Dr. Christopher Lee', description: 'Radiographer, PIH Lesotho' },
+    { profilePicture: <img className="profile-image" src={ortho} alt="Dr. Christopher Lee" />, name: 'Dr. Christopher Lee', specialty: 'Dr. Christopher Lee', description: 'Principal Investigator of MedicoTech Research Institute, Director of Radiology at HSU University'},
   ];
 
   return (

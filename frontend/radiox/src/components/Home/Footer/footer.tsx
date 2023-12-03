@@ -2,10 +2,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import twitterIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/twitter-icon.png";
-import InstagramIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/Instagram.jpg";
-import facebookIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/facebook.jpg";
-import youtubeIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/youtube.jpg";
+import twitterIcon from "../../../images/twitter-icon.png"
+import InstagramIcon from "../../../images/Instagram.jpg"
+import facebookIcon from "../../../images/facebook.jpg"
+import youtubeIcon from "../../../images/youtube.jpg"
 
 const MainSections: React.FC = () => {
   return (
