@@ -1,6 +1,6 @@
 // CurvedBox.tsx
 import React from 'react';
-import './CurvedBox.css';
+import './curvedBox.css';
 import assistance from '../images/assistance.jpeg';
 import collaborator from '../images/collaborator.jpeg';
 import support from '../images/support.jpeg';
