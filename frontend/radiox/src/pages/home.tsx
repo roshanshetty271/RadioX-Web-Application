@@ -1,6 +1,9 @@
+
 import Products from '../components/Home/Products/products'
 import Navbar from '../components/Home/NavBar/Navbar';
 import HeroPage from '../components/Home/Hero/Hero';
+import Stats from '../components/Home/Stats/stats'
+import Footer from '../components/Home/Footer/footer'
 
 const home = () => {
   return (
@@ -9,6 +12,8 @@ const home = () => {
       <Navbar />
       <HeroPage />
       <Products/>
+      <Stats/>
+    <Footer/>
       
       {/* Add the rest of your application content here */}
     </>
