@@ -1,10 +1,19 @@
-import React from 'react'
 import Products from '../components/Home/Products/products'
+import Navbar from '../components/Home/NavBar/Navbar';
+import HeroPage from '../components/Home/Hero/Hero';
 
-function home() {
+const home = () => {
   return (
-    <Products/>
-  )
-}
+    <>
+      
+      <Navbar />
+      <HeroPage />
+      <Products/>
+      
+      {/* Add the rest of your application content here */}
+    </>
+  );
+};
 
-export default home
+export default home;
+
