@@ -1,52 +1,51 @@
-
+// MainSections.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import twitterIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/twitter-icon.png";
-import InstagramIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/Instagram.jpg";
-import facebookIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/facebook.jpg";
-import youtubeIcon from "/Users/marve/Desktop/Web Design Final Project/final-project-raps/frontend/radiox/src/images/youtube.jpg";
+import twitterIcon from "../../../images/twitter-icon.png"
+import InstagramIcon from "../../../images/Instagram.jpg"
+import facebookIcon from "../../../images/facebook.jpg"
+import youtubeIcon from "../../../images/youtube.jpg"
 
-const MainSections: React.FC = () => {
+const FooterSections: React.FC = () => {
   return (
-    <div className="main-sections-container">
+    <div className="footer-sections-container">
       
-      <section>
-        <h1>qure.ai</h1>
-        <p>Qure.ai Technologies Private Limited</p>
-        <p className="qure-para">
-          Qure.ai was founded in 2016. Our mission is to use artificial
-          intelligence to make healthcare more accessible and affordable.
+      <section className="footer-section">
+        <h1 className="footer-heading">RadioX</h1>
+        <p>RadioX Health Platform</p>
+        <p className="footer-qure-para">
+          RadioX was founded in 2023. Our mission is to use technology to make healthcare more accessible and affordable.
         </p>
         
-        <div className="follow-us">
+        <div className="footer-follow-us">
           <p>Follow us</p>
-          <div className="icons-container">
+          <div className="footer-icons-container">
             
             <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer">
-              <img src={twitterIcon} alt="Twitter" />
+              <img src={twitterIcon} alt="Twitter" className="footer-icon" />
             </a>
 
             
             <a href="https://www.linkedin.com/company/example" target="_blank" rel="noopener noreferrer">
-              <img src={InstagramIcon} alt="Instagram" />
+              <img src={InstagramIcon} alt="Instagram" className="footer-icon" />
             </a>
 
            
             <a href="https://www.facebook.com/example" target="_blank" rel="noopener noreferrer">
-              <img src={facebookIcon} alt="Facebook" />
+              <img src={facebookIcon} alt="Facebook" className="footer-icon" />
             </a>
 
             
             <a href="https://www.youtube.com/c/example" target="_blank" rel="noopener noreferrer">
-              <img src={youtubeIcon} alt="YouTube" />
+              <img src={youtubeIcon} alt="YouTube" className="footer-icon" />
             </a>
           </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="products">
+      <section className="footer-section footer-products">
         <h2>Products</h2>
         <ul>
           <li><Link to="/chest-x-ray-reporting">Chest X-ray Reporting</Link></li>
@@ -55,12 +54,12 @@ const MainSections: React.FC = () => {
           <li><Link to="/stroke-tbi">Stroke & TBI</Link></li>
           <li><Link to="/msk-x-ray-reporting">MSK X-Ray Reporting</Link></li>
           <li><Link to="/heart-failure">Heart Failure</Link></li>
-          <li><Link to="/qure-ai-app">Qure AI App</Link></li>
+          <li><Link to="/qure-ai-app">RadioX App</Link></li>
         </ul>
       </section>
 
       {/* About Section */}
-      <section className="about">
+      <section className="footer-section footer-about">
         <h2>About</h2>
         <ul>
           <li><Link to="/about-us">About Us</Link></li>
@@ -71,7 +70,7 @@ const MainSections: React.FC = () => {
       </section>
 
       {/* Knowledge Center Section */}
-      <section className="knowledge">
+      <section className="footer-section footer-knowledge">
         <h2>Knowledge Center</h2>
         <ul>
           <li><Link to="/news-and-press">News and Press</Link></li>
@@ -85,4 +84,4 @@ const MainSections: React.FC = () => {
   );
 };
 
-export default MainSections;
+export default FooterSections;

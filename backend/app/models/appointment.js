@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
@@ -15,7 +15,7 @@ const AppointmentSchema = new Schema({
         type: String,
         required: true
     },
-    date: {        
+    date: {
         type: String,
         required: true
     },
@@ -25,7 +25,8 @@ const AppointmentSchema = new Schema({
             required: true
         },
         duration: {
-            type: Number
+            type: Number,
+            required: true
         }
     },
     location: {
@@ -33,20 +34,20 @@ const AppointmentSchema = new Schema({
         required: true
     },
     patientName: {
-        firstName:{
+        firstName: {
             type: String,
             required: true
         },
-        lastName:{
+        lastName: {
             type: String
-        }        
+        }
     },
     doctorName: {
-        firstName:{
+        firstName: {
             type: String,
             required: true
         },
-        lastName:{
+        lastName: {
             type: String
         }   
     },
@@ -54,12 +55,8 @@ const AppointmentSchema = new Schema({
         type: String,
         required: true
     }
+});
 
-},
-// {
-//     versionKey: false
-// }
-)
+const AppointmentModel = mongoose.model('Appointment', AppointmentSchema);
 
-const AppointmentModel = mongoose.model('appointment', AppointmentSchema)
-export default AppointmentModel
+export default AppointmentModel;
