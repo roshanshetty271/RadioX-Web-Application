@@ -1,5 +1,6 @@
 // Navbar.js
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Navbar.css';
 import navlogo from '../../../images/navlogo.jpeg';
 
@@ -38,7 +39,9 @@ const Navbar = () => {
         </div>
         <span>Impact</span>
         <span>Contact Us</span>
-        <button>Try Now</button> 
+        <Link to="/login">
+          <button>Try Now</button>
+        </Link>
         <span>Global</span>
       </div>
     </div>
