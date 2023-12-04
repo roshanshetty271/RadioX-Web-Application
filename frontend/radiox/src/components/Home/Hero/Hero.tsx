@@ -2,7 +2,7 @@
 //0f2332 
 import React from 'react';
 import './HeroPage.css';
-import hero from './hero.jpeg'
+import hero from '../../../images//hero.jpeg'
 
 const HeroPage: React.FC = () => {
   return (
