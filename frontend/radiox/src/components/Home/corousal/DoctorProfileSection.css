@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 520px;
+    height: 330px;
     background-color: rgba(243, 244, 246, 255);
     overflow: hidden;
     position: relative;
@@ -26,6 +26,19 @@ body {
     /* Added transition for smoother effects */
 }
 
+.section-parent {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(243, 244, 246, 255);
+  padding-bottom: 2rem;
+}
+
+.section-title{
+  display: flex;
+  justify-content: center;
+  color: #0a0909;
+  font-size: 30px;
+}
 
 /* Added a more specific selector to pause the animation on hover */
 
@@ -55,7 +68,6 @@ body {
     width: 100%;
     transform: translateX(0);
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.9);
     /* Highlight background color */
     transition: background-color 0.3s ease-in-out;
     /* Smooth transition for highlighting */

@@ -24,14 +24,19 @@ const DoctorProfileSection: React.FC = () => {
   ];
 
   return (
-    <div className={`section-container`}>
-      {doctorProfiles.map((doctor, index) => (
-        <div key={index} className="profile-container">
-          {doctor.profilePicture}
-          <div className="specialty">{doctor.specialty}</div>
-          <div className="description">{doctor.description}</div>
-        </div>
-      ))}
+    <div className="section-parent">
+      <div className='section-title'>
+        <h2>MEET OUR HEADS</h2>
+      </div>
+      <div className="section-container">
+        {doctorProfiles.map((doctor, index) => (
+          <div key={index} className="profile-container">
+            {doctor.profilePicture}
+            <div className="specialty">{doctor.specialty}</div>
+            <div className="description">{doctor.description}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
