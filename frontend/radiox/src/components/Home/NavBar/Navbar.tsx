@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Navbar.css';
-import navlogo from '../../../images/navlogo.jpeg';
+import navlogo from '../../../images/Radiox-logo.png';
 
 const Navbar = () => {
   return (
     <div className="navbar">
       <img src={navlogo} alt="Qure Logo" width={50} height={'auto'} />
-      <h1>RadioX</h1>
+      
       <div>
         <div className="dropdown">
           <span className="dropbtn">

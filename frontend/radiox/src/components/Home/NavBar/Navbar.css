@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.navbar img {
+    height: 100px;
+    width: 160px;
+}
+
 .navbar span {
     margin-left: 60px;
     /* Increase the margin */

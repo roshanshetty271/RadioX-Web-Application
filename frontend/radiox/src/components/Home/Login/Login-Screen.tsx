@@ -4,7 +4,7 @@ import './Login-Screen.css';
 import Image1 from '../../../images/patient-login.png';
 import Image2 from '../../../images/patient-login2.png';
 import Image3 from '../../../images/patient-login3.png';
-import NavLogo from '../../../images/navlogo.jpeg'; 
+import NavLogo from '../../../images/Radiox-logo.png'; 
 
 const textData = [
   "Fast and accurate reporting with intelligent tools",
@@ -40,7 +40,7 @@ const AppContainer: React.FC = () => {
   return (
     <div className="app-container">
       
-      <h1 className="big-text">RadioX</h1>
+     
 
       
       <img src={NavLogo} alt="NavLogo" className="nav-logo" />

@@ -18,6 +18,11 @@ body {
     text-align: left;
 }
 
+.footer-section img {
+    height: 100px;
+    width: 160px;
+}
+
 .footer-heading {
     padding-bottom: 30px;
     color: rgb(233, 116, 99);
