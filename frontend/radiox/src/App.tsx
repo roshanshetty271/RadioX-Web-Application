@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import LoginScreen from "./components/Home/Login/Login-Screen"; // Update the path accordingly
+import Appointment from "./pages/appointment";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginScreen />} /> {/* Add the correct path for the login route */}
+          <Route path="/appointment" element={<Appointment />} />
         </Routes>
       </div>
     </Router>
