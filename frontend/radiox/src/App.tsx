@@ -1,13 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/home';
+// App.js
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/home";
+import LoginScreen from "./components/Home/Login/Login-Screen"; // Update the path accordingly
 
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <Router>
+      <div className="App">
+        {/* Your header or navigation bar can go here if needed */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginScreen />} /> {/* Add the correct path for the login route */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

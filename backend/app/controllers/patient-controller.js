@@ -1,8 +1,15 @@
-// app/controllers/patient-controller.js
-
 import * as patientService from '../services/patient-service.js';
-import { setErrorResponse, setResponse } from './response-handles.js';
+import { setResponse, setErrorResponse } from './response-handler.js';
 
+export const deletePatientById = async (req, res) => {
+    try {
+        const id = req.params.id; // Assuming the patient ID is in the request parameters
+        const result = await patientService.deleteById(id);
+        setResponse(result, res);
+    } catch (err) {
+        setErrorResponse(err, res);
+    }
+};
 /**
  * Controller function to handle patient registration.
  * @param {Object} req - Express request object.

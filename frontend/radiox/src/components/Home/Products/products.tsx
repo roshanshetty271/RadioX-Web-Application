@@ -11,8 +11,8 @@ import lungNodule from "../../../images/lung nodule.jpg"
 const Products: React.FC = () => {
 
     return (
-        <div className="parentContainer">
-            <div className='container'>
+        <div className="product">
+            <div className='product-container'>
                 <div className="products-left">
                     <p>Products</p>
                     <div className='product-boxes'>

@@ -1,7 +1,7 @@
-// app/routes/patient-routes.js
 
-import * as patientController from '../controllers/patient-controller.js';
+
 import express from 'express';
+import * as patientController from '../controllers/patient-controller.js';
 
 const router = express.Router();
 
@@ -22,7 +22,5 @@ router.get('/viewinfo/:id', patientController.viewPatientInfo);
 
 // View Patient's Medical Report
 router.get('/viewreport/:id', patientController.viewPatientReport);
-
-
 
 export default router;

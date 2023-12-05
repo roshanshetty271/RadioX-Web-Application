@@ -1,8 +1,7 @@
-import express from 'express'
+import express from 'express';
+import * as appointmentController from '../controllers/appointment-controller.js';
 
-import * as appointmentController from '../controllers/appointment-controller.js'
-
-const router = express.Router()
+const router = express.Router();
 
 router.route('/schedule').post(appointmentController.scheduleAppointment)
 
