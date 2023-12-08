@@ -1,9 +1,17 @@
+.appointment-parent{
+  background-color: #f5f8fa; 
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  box-shadow: 0 10px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+
+}
+
 .appointment-calendar{
     display: flex;
     justify-content: center;
     width: 80%;
-    /* height: 100vh; */
-    background-color: #d10000; 
+    margin: 2rem
 }
 
 .calendar-logo{
@@ -214,6 +222,7 @@
 .booking h4{
   color: #0f2332;
   font-weight: 800;
+  margin: 0.8rem 0;
 }
 
 

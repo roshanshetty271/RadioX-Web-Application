@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import "./doctorDropdown.css"
+
 
 interface DoctorDropdownProps {
   doctors: string[]; // Array of doctor names
@@ -14,18 +16,17 @@ const DoctorDropdown: React.FC<DoctorDropdownProps> = ({ doctors }) => {
 
   return (
     <div>
-      <label htmlFor="doctorDropdown">Select a Doctor:</label>
-      <select id="doctorDropdown" value={selectedDoctor || ''} onChange={handleDoctorChange}>
-        <option value="" disabled>
-          Select a doctor
-        </option>
+      {/* <label htmlFor="doctorDropdown">Select a Doctor:</label> */}
+      <select className="doctor-dropdown" id="doctorDropdown" value={selectedDoctor || ''} onChange={handleDoctorChange}>
+        {/* <option value="" disabled>
+          Dr. Smith
+        </option> */}
         {doctors.map((doctor, index) => (
           <option key={index} value={doctor}>
             {doctor}
           </option>
         ))}
       </select>
-      {selectedDoctor && <p>You selected {selectedDoctor}</p>}
     </div>
   );
 };
