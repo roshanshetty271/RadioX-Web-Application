@@ -51,3 +51,26 @@ export const updateDoctorById = async (id, updatedDoctor) => {
     throw new Error('Error while updating Doctor details');
   }
 };
+
+export const updateRemarks = async (doctorId, patientId, remarks) => {
+  try {
+    const doctor = await Doctor.findById(doctorId);
+
+    if (!doctor) {
+      throw new Error('Doctor not found');
+    }
+
+    const patient = doctor.patients.find((p) => p._id.toString() === patientId);
+
+    if (!patient) {
+      throw new Error('Patient not found');
+    }
+
+    patient.remarks = remarks;
+    await doctor.save();
+
+    return doctor;
+  } catch (error) {
+    throw error;
+  }
+};
