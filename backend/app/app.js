@@ -16,6 +16,13 @@ const initialize = (app) => {
   mongoose.connect(mongoDBURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log(`Connected to MongoDB Atlas at ${mongoDBURI}`);
+  })
+  .catch((err) => {
+    console.error(`MongoDB connection error: ${err}`);
+    process.exit(1);
   });
 
   // Event listeners for Mongoose connection
