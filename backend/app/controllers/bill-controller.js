@@ -1,5 +1,7 @@
 import * as billService from '../services/bill-service.js';
 import { setErrorResponse, setResponse } from './response-handler.js';
+import stripePackage from 'stripe';
+import dotenv from "dotenv";
 
 /**
  * Controller function to handle generating a bill.
@@ -90,3 +92,41 @@ export const deleteBill = async (req, res) => {
         setErrorResponse(error, res);
     }
 };
+
+
+export const createPayment = async (req, res) => {
+
+    dotenv.config()
+
+    const stripe = stripePackage("sk_test_51OKSOIHp2pwGV5UyMNXGPgsBX2K3fppUEpYseoOVkuGN8PZt3KWhh4wKWAjazQNM71MjLw5oxA6g0yEyv4eVvl1k00s2hsiYcb");
+
+    const {appointment} = req.body
+
+    console.log(appointment)
+
+
+
+    const session = await stripe.checkout.sessions.create({
+    
+      payment_method_types: ["card"],  
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'T-shirt',
+            },
+            unit_amount: 2000,
+          }, 
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: "http://localhost:3000/checkout",
+      cancel_url: "http://localhost:3000",
+    });
+  
+    //res.redirect(303, session.url);
+    res.json({id: session.id})
+    
+  }

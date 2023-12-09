@@ -3,10 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const AppointmentSchema = new Schema({
-    appointmentID: {
-        type: String,
-        required: true
-    },
     patientID: {
         type: String,
         required: true

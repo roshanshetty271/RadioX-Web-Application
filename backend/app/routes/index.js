@@ -10,5 +10,5 @@ export default (app) => {
     app.use('/reports', reportRouter)
     app.use('/patients', patientRoutes);
     app.use('/doctors', doctorRoutes);
-    app.use('/bills', billRoutes);
+    app.use('/api/bills', billRoutes);
 }
