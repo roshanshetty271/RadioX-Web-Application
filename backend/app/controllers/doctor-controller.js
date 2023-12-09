@@ -23,6 +23,17 @@ export const updateDoctor = async (req, res) => {
     }
 };
 
+export const getPatientInfoController = async (req, res) => {
+    const { doctorId, patientId } = req.params;
+  
+    try {
+      const patientInfo = await doctorService.getPatientInfo(doctorId, patientId);
+      res.status(200).json({ patientInfo });
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  };
+
 export const deleteDoctor = async (req, res) => {
     try {
         const doctorId = req.params.id;
@@ -33,11 +44,8 @@ export const deleteDoctor = async (req, res) => {
     }
 };
 
-/**
- * Controller function to handle viewing doctor information by ID.
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- */
+
+
 export const viewDoctorInfo = async (req, res) => {
     try {
         // Extract doctor ID from the request parameters
@@ -54,11 +62,7 @@ export const viewDoctorInfo = async (req, res) => {
     }
 };
 
-/**
- * Controller function to handle doctor login.
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- */
+
 export const doctorLogin = async (req, res) => {
     try {
         // Extract username and password from the request body
@@ -73,3 +77,15 @@ export const doctorLogin = async (req, res) => {
         setErrorResponse(error, res);
     }
 };
+
+export const updateRemarks = async (req, res) => {
+    const { doctorId, patientId } = req.params;
+    const { remarks } = req.body;
+  
+    try {
+      const updatedDoctor = await doctorService.updateRemarks(doctorId, patientId, remarks);
+      res.json(updatedDoctor);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
