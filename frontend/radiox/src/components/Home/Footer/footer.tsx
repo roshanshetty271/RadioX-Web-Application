@@ -6,13 +6,15 @@ import twitterIcon from "../../../images/twitter-icon.png"
 import InstagramIcon from "../../../images/Instagram.jpg"
 import facebookIcon from "../../../images/facebook.jpg"
 import youtubeIcon from "../../../images/youtube.jpg"
+import navlogo from '../../../images/Radiox-logo.png';
 
 const FooterSections: React.FC = () => {
   return (
     <div className="footer-sections-container">
       
       <section className="footer-section">
-        <h1 className="footer-heading">RadioX</h1>
+        
+        <img src={navlogo} alt="Qure Logo" width={50} height={'auto'} />
         <p>RadioX Health Platform</p>
         <p className="footer-qure-para">
           RadioX was founded in 2023. Our mission is to use technology to make healthcare more accessible and affordable.

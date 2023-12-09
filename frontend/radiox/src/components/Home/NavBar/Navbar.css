@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.navbar img {
+    height: 100px;
+    width: 160px;
+}
+
 .navbar span {
     margin-left: 60px;
     /* Increase the margin */
@@ -21,6 +26,10 @@
 
 .navbar span:hover {
     color: #ff7869;
+}
+
+.contact {
+    color: white;
 }
 
 .navbar button {
