@@ -1,6 +1,7 @@
 // ./app/controllers/doctor-controller.js
 import * as doctorService from '../services/doctor-service.js';
 import { setErrorResponse, setResponse } from './response-handler.js';
+import { getPatientInfo } from '../services/doctor-service.js';
 
 export const registerDoctor = async (req, res) => {
     try {
@@ -34,25 +35,28 @@ export const getPatientInfoController = async (req, res) => {
     }
   };
 
-export const deleteDoctor = async (req, res) => {
-    try {
-        const doctorId = req.params.id;
-        const result = await doctorService.deleteDoctorById(doctorId);
-        setResponse(result, res);
-    } catch (error) {
-        setErrorResponse(error, res);
-    }
-};
+// export const deleteDoctor = async (req, res) => {
+//     try {
+//         const doctorId = req.params.id;
+//         const result = await doctorService.deleteDoctorById(doctorId);
+//         setResponse(result, res);
+//     } catch (error) {
+//         setErrorResponse(error, res);
+//     }
+// };
 
-
-
+/**
+ * Controller function to handle viewing doctor information by ID.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 export const viewDoctorInfo = async (req, res) => {
     try {
         // Extract doctor ID from the request parameters
         const doctorId = req.params.id;
 
         // Call the get doctor service
-        const doctor = await doctorService.getDoctor(doctorId);
+        const doctor = await doctorService.getDoctorById(doctorId);
 
         // Set a success response
         setResponse(doctor, res);
@@ -80,10 +84,10 @@ export const doctorLogin = async (req, res) => {
 
 export const updateRemarks = async (req, res) => {
     const { doctorId, patientId } = req.params;
-    const { remarks } = req.body;
+    const { remarks, patientScansDone } = req.body;
   
     try {
-      const updatedDoctor = await doctorService.updateRemarks(doctorId, patientId, remarks);
+      const updatedDoctor = await doctorService.updateRemarks(doctorId, patientId, remarks, patientScansDone);
       res.json(updatedDoctor);
     } catch (error) {
       res.status(500).json({ error: error.message });
