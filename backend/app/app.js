@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import registerRoutes from './routes/index.js';
 
 const initialize = (app) => {
+  console.log('Here')
   // MongoDB URI
   const mongoDBURI = 'mongodb+srv://shettyaayu:CAw8PmtbGCabGGZN@cluster0.7yywkny.mongodb.net/MasterDb?retryWrites=true&w=majority';
 
@@ -36,6 +37,7 @@ const initialize = (app) => {
   // Connection error
   db.on('error', (err) => {
     console.error(`MongoDB connection error: ${err}`);
+    process.exit(1);
   });
 
   // Disconnected
