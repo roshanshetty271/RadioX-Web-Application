@@ -6,6 +6,7 @@ import heartFailure from "../../../images/heart failure.jpg"
 import strokeTBI from "../../../images/stroke&TBI.jpg"
 import tbCare from "../../../images/TB Care.jpg"
 import lungNodule from "../../../images/lung nodule.jpg"
+import { Link } from 'react-router-dom'
 
 
 const Products: React.FC = () => {
@@ -62,7 +63,7 @@ const Products: React.FC = () => {
             </div>
             <div className="appointment">
                 <p>Let's Book an Appointment</p>
-                <button>View available slots</button>
+                <Link to="/appointment"><button>View available slots</button></Link>
             </div>
         </div>
         

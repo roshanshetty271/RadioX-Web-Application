@@ -10,4 +10,6 @@ router.route('/:id').get(appointmentController.getAppointment)
 router.route('/update/:id').put(appointmentController.updateAppointment)
      
 router.route('/cancel/:id').patch(appointmentController.cancelAppointment)
+
+// route.route('/slots').
 export default router
