@@ -19,7 +19,7 @@ export const scheduleAppointment = async(request, response) => {
         const appointment = await appointmentService.save(newAppointment)
         setResponse({
             message: "Appointment scheduled successfully",
-            appointmentId: appointment._id
+            appointmentId: appointment.appointmentID
         }, response)        
     }
     catch(err){
@@ -32,6 +32,8 @@ export const updateAppointment = async (request, response) => {
     try{
         const id = request.params.id;
         const updatedAppointment = {...request.body}
+        console.log(updatedAppointment)
+        console.log("id: ", id)
         const appointment = await appointmentService.update(updatedAppointment, id)
         
         setResponse({
@@ -39,6 +41,7 @@ export const updateAppointment = async (request, response) => {
         }, response)
     }
     catch(err){
+        console.log(err)
         setErrorResponse(err, response)
     }
 }
