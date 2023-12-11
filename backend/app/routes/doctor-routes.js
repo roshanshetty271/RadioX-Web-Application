@@ -8,7 +8,7 @@ const router = express.Router();
 router.route('/').post(doctorController.registerDoctor);
 
 // Handle multiple HTTP methods on the same endpoint
-router.route('/doctors/:id')
+router.route('/:id')
   .get(doctorController.viewDoctorInfo)
   .put(doctorController.updateDoctor)
   //.delete(doctorController.deleteDoctor);
