@@ -13,19 +13,20 @@ export const addDoctor = async (doctorData) => {
   }
 };
 
-export const deleteDoctorById = async (id) => {
+export const getDoctorById = async (id) => {
   try {
-    const result = await Doctor.findByIdAndDelete(id);
-    if (result) {
-      console.log('Doctor successfully deleted');
-      return { message: 'Doctor successfully deleted' };
+    const doctor = await Doctor.findById(id);
+
+    if (doctor) {
+      console.log('Doctor found:', doctor);
+      return { message: 'Doctor found successfully', doctor };
     } else {
       console.log('Doctor not found');
       throw new Error('Doctor not found');
     }
   } catch (error) {
-    console.error('Error while deleting Doctor:', error.message);
-    throw new Error('Error while deleting Doctor');
+    console.error('Error while getting Doctor by ID:', error.message);
+    throw new Error('Error while getting Doctor by ID');
   }
 };
 
@@ -52,7 +53,27 @@ export const updateDoctorById = async (id, updatedDoctor) => {
   }
 };
 
-export const updateRemarks = async (doctorId, patientId, remarks) => {
+
+export const updateScansById = async (id, scansData) => {
+  try {
+    const result = await Doctor.findByIdAndUpdate(id, { $set: scansData }, { new: true });
+
+    if (result) {
+      console.log('Scans updated successfully');
+      console.log('Updated Doctor:', result);
+      return { message: 'Scans updated successfully', doctor: result };
+    } else {
+      console.log('Doctor not found');
+      throw new Error('Doctor not found');
+    }
+  } catch (error) {
+    console.error('Error while updating scans:', error.message);
+    throw new Error('Error while updating scans');
+  }
+};
+
+
+export const updateRemarks = async (doctorId, patientId, remarks, patientScansDone) => {
   try {
     const doctor = await Doctor.findById(doctorId);
 
@@ -66,11 +87,15 @@ export const updateRemarks = async (doctorId, patientId, remarks) => {
       throw new Error('Patient not found');
     }
 
-    patient.remarks = remarks;
-    await doctor.save();
+    if (patient.remarks !== remarks || patient.patientScansDone !== patientScansDone) {
+      patient.remarks = remarks;
+      patient.patientScansDone = true;
+      await doctor.save();
+    }
 
     return doctor;
   } catch (error) {
-    throw error;
+    // Customize the error message or handle differently if needed
+    throw new Error(`Error updating remarks: ${error.message}`);
   }
 };
