@@ -13,6 +13,31 @@ export const addDoctor = async (doctorData) => {
   }
 };
 
+export const getPatientInfo = async (doctorId, patientId) => {
+  try {
+    const doctor = await Doctor.findById(doctorId);
+    if (!doctor) {
+      throw new Error('Doctor not found');
+    }
+
+    const patient = doctor.patients.find((patient) => patient._id.toString() === patientId);
+    if (!patient) {
+      throw new Error('Patient not found');
+    }
+
+    return {
+      patientName: patient.patientName,
+      patientLocation: patient.patientLocation,
+      patientPhoneNumber: patient.patientPhoneNumber,
+      patientScansDone: patient.patientScansDone,
+      scannedImages: patient.scannedImages,
+      remarks: patient.remarks,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getDoctorById = async (id) => {
   try {
     const doctor = await Doctor.findById(id);

@@ -67,20 +67,32 @@ export const viewDoctorInfo = async (req, res) => {
 };
 
 
-export const doctorLogin = async (req, res) => {
+// export const doctorLogin = async (req, res) => {
+//     try {
+//         // Extract username and password from the request body
+//         const { username, password } = req.body;
+
+//         // Call the doctor login service (implement this in doctor-service.js)
+//         const doctor = await doctorService.loginDoctor(username, password);
+
+//         // Set a success response
+//         setResponse({ message: 'Doctor logged in successfully', doctor }, res);
+//     } catch (error) {
+//         setErrorResponse(error, res);
+//     }
+// };
+
+export const updateScans = async (req, res) => {
+    const doctorId = req.params.id; 
+    const { scans_done, scans_pending } = req.body;
+  
     try {
-        // Extract username and password from the request body
-        const { username, password } = req.body;
-
-        // Call the doctor login service (implement this in doctor-service.js)
-        const doctor = await doctorService.loginDoctor(username, password);
-
-        // Set a success response
-        setResponse({ message: 'Doctor logged in successfully', doctor }, res);
+      const result = await doctorService.updateScansById(doctorId, { scans_done, scans_pending });
+      res.status(200).json(result);
     } catch (error) {
-        setErrorResponse(error, res);
+      res.status(500).json({ error: error.message });
     }
-};
+  };
 
 export const updateRemarks = async (req, res) => {
     const { doctorId, patientId } = req.params;
