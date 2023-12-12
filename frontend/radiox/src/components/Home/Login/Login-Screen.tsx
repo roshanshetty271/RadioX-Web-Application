@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Login-Screen.css'; 
 import Image1 from '../../../images/patient-login.png';
 import Image2 from '../../../images/patient-login2.png';
@@ -42,9 +43,9 @@ const AppContainer: React.FC = () => {
       
      
 
-      
+      <Link to="/">
       <img src={NavLogo} alt="NavLogo" className="nav-logo" />
-
+    </Link>
       
       <div className="slideshow-container">
         {images.map((image, index) => (
@@ -87,7 +88,7 @@ const AppContainer: React.FC = () => {
           </div>
         </form>
         <div className="signup-link">
-          Don't have an account? <a href="#">Sign Up</a>
+         Don't have an account? <Link to="/signup">Sign Up </Link>
         </div>
       </div>
     </div>

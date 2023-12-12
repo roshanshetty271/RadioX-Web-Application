@@ -74,8 +74,8 @@
 .radiox-logo {
     height: 180px;
     width: 180px;
-    position: relative;
-    top: -100px;
+    margin-bottom: 90px;
+    margin-left: 200px;
 }
 
 .form-container {

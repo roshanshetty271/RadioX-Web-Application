@@ -7,8 +7,9 @@ import navlogo from '../../../images/Radiox-logo.png';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <img src={navlogo} alt="Qure Logo" width={50} height={'auto'} />
-      
+       <Link to="/">
+        <img src={navlogo} alt="Qure Logo" width={50} height={'auto'} />
+      </Link>
       <div>
         <div className="dropdown">
           <span className="dropbtn">
@@ -43,7 +44,7 @@ const Navbar = () => {
         </Link>
         
         <Link to="/login">
-          <button>Try Now</button>
+          <button>Login</button>
         </Link>
         <span>Global</span>
       </div>

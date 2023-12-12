@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './contact-us.css';
 import greenTickImage from '../../../images/greentick.png'; // Import the image
 import navlogo from '../../../images/Radiox-logo.png';
@@ -8,7 +9,9 @@ const ContactPage: React.FC = () => {
     <div className="contact-page">
       {/* Container 1 */}
       <div className="container1">
+      <Link to="/">
         <img src={navlogo} alt="RadioX Logo" className="radiox-logo" />
+        </Link>
         <img src={greenTickImage} alt="Green Tick" className="green-tick" />
         <div className="big-text">We are open to conversation</div>
         <div className="get-in-touch">Get in touch with us.</div>
@@ -28,7 +31,7 @@ const ContactPage: React.FC = () => {
             <input type="text" id="email" name="email" placeholder="Email" />
           </div>
 
-          <div className="right-column">
+          <div className="right-column">  
             <input type="text" id="phone" name="phone" placeholder="Phone Number" />
 
             <input type="text" id="city" name="city" placeholder="City" />
