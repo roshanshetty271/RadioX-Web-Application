@@ -6,15 +6,22 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { selectUserData, setUserData } from "../../../app/store";
 import "./PatientUI.css";
 import radioXImage from "../../../images/Radiox-logo.png";
+import { useNavigate } from 'react-router-dom';
 
 const PatientUI: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const userData = useSelector(selectUserData);
   const dispatch = useDispatch();
   const [activeButton, setActiveButton] = useState("profileDetails");
   const [updatedUserData, setUpdatedUserData] = useState({ ...userData });
 
   const handleButtonClick = (buttonName: string) => {
-    setActiveButton(buttonName);
+    if (buttonName === "Logout") {
+      // If Logout button is clicked, navigate to the login page
+      navigate('/login');
+    } else {
+      setActiveButton(buttonName);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +73,12 @@ const PatientUI: React.FC = () => {
           onClick={() => handleButtonClick("viewMedicalReport")}
         >
           View Medical Report
+        </button>
+        <button
+          className={`sidebar-content ${activeButton === "Logout" ? "active" : ""}`}
+          onClick={() => handleButtonClick("Logout")}
+        >
+          Logout
         </button>
       </div>
       <div className="patient-ui">

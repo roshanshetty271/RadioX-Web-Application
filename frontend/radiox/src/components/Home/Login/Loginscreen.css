@@ -112,6 +112,12 @@ button.active {
     background-color: rgb(219, 223, 226);
 }
 
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .image-text {
     position: absolute;
     bottom: 10px;

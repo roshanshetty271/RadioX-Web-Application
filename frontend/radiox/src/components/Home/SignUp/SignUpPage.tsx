@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setUserData } from '../../../app/store';
 
 import './SignUpPage.css';
-import radioXImage from '../../../images/Radiox-logo.png'; 
+import radioXImage from '../../../images/Radiox-logo.png';
 
 const SignUpPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -45,11 +45,11 @@ const SignUpPage: React.FC = () => {
 
     // Assuming formData is your input data
     dispatch(setUserData(formData));
-    // Add logic here to handle form submission, like API calls or validation
-    console.log('Form submitted:', formData);
+      // Store user credentials in local storage
+  localStorage.setItem('userCredentials', JSON.stringify({ username: formData.username, password: formData.password }));
 
-    // Assume successful signup and navigate to the patient UI page
-    navigate('/patient', { state: { name: formData.name } });
+    // Assume successful signup and navigate to the login page
+    navigate('/login');
   };
 
   const validateForm = () => {
@@ -82,7 +82,7 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="signup-page">
-     <Link to="/">
+      <Link to="/">
         <img src={radioXImage} alt="RadioX Logo" className="radiox-logo" />
       </Link>
       <form onSubmit={handleSubmit}>
