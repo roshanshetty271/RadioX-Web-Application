@@ -1,13 +1,12 @@
 import React from 'react';
-import Sidebar from '../components/Doctor Dashboard/Sidebar/Sidebar';
-import Dashboard from '../components/Doctor Dashboard/Dashboard/Dasboard';
+import Sidebar from '../component/Sidebar/Sidebar';
+import Dashboard from '../component/Dashboard/Dashboard';
 
-
-const DoctorPortal = () => {
+const DoctorPortal: React.FC = () => {
   return (
     <>
-    <Sidebar/>
-    <Dashboard />
+      <Sidebar />
+      <Dashboard />
     </>
   );
 };
