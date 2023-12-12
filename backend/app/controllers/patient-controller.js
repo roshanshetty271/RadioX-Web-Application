@@ -1,7 +1,7 @@
 import * as patientService from '../services/patient-service.js';
 import { setResponse, setErrorResponse } from './response-handler.js';
 
-export const deletePatientById = async (req, res) => {
+export const deletePatientById = async(req, res) => {
     try {
         const id = req.params.id; // Assuming the patient ID is in the request parameters
         const result = await patientService.deleteById(id);

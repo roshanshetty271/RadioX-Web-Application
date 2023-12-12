@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { selectUserData, setUserData } from "../SignUp/store";
+import { selectUserData, setUserData } from "../../../app/store";
 import "./PatientUI.css";
 import radioXImage from "../../../images/Radiox-logo.png";
 
@@ -172,3 +172,4 @@ const PatientUI: React.FC = () => {
 };
 
 export default PatientUI;
+

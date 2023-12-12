@@ -3,7 +3,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Provider } from 'react-redux'; // Import Provider
-import { store } from './components/Home/SignUp/store'; // Use named import for store
+import { store } from './app/store'; // Use named import for store
 import "./App.css";
 import Home from "./pages/home";
 import LoginScreen from "./components/Home/Login/Login-Screen";

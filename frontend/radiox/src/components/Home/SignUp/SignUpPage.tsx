@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUserData } from './store';
+import { setUserData } from '../../../app/store';
 
 import './SignUpPage.css';
 import radioXImage from '../../../images/Radiox-logo.png'; 
