@@ -1,0 +1,11 @@
+.paymentDialog{
+    width:200px;
+    height:200px;
+    color: azure;
+    background-color: #ffffff;
+    position: absolute;
+    top: 3rem;
+    
+    z-index: 2;
+    border-radius: 10px;
+}

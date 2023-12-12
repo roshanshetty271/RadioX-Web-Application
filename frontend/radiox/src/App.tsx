@@ -6,8 +6,8 @@ import { Provider } from 'react-redux'; // Import Provider
 import { store } from './app/store'; // Use named import for store
 import "./App.css";
 import Home from "./pages/home";
-import LoginScreen from "./components/Home/Login/Login-Screen";
-import ContactScreen from './components/Home/Contact/contact-us';
+import LoginScreen from "./components/Home/Login/Loginscreen";
+import ContactScreen from './components/Home/Contact/contactus';
 import SignUpPage from "./components/Home/SignUp/SignUpPage";
 import PatientUI from "./components/Home/Patient/PatientUI";
 

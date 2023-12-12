@@ -1,20 +1,36 @@
-// app/models/patient.js
-
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
-
-const PatientSchema = new Schema({
-    name: String,
-    dateOfBirth: String,
-    phoneNumber: String,
-    address: String,
-    gender: String,
-    symptoms: String,
-    username: String,
-    password: String,
+const patientSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+  scans_done: {
+    type: Boolean,
+    default: false,
+  },
+  remarks: {
+    type: String,
+  },
+  assigned_doctor_email: {
+    type: String,
+  },
+  scannedImages: [
+    {
+      data: Buffer,
+      contentType: String,
+    },
+  ],
 });
 
-const PatientModel = mongoose.model('Patient', PatientSchema);
+const Patient = mongoose.model('Patient', patientSchema);
 
-export default PatientModel;
+export default Patient;

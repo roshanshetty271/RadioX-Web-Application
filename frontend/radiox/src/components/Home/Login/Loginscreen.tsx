@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './Login-Screen.css'; 
+import './Loginscreen.css'; 
 import Image1 from '../../../images/patient-login.png';
 import Image2 from '../../../images/patient-login2.png';
 import Image3 from '../../../images/patient-login3.png';

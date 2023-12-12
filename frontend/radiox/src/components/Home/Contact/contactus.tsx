@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './contact-us.css';
+import './contactus.css';
 import greenTickImage from '../../../images/greentick.png'; // Import the image
 import navlogo from '../../../images/Radiox-logo.png';
 

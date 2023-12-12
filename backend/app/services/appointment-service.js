@@ -2,7 +2,7 @@ import Appointment from '../models/appointment.js'
 import mongoose from 'mongoose'
 
 export const search = async (id) => {
-    const appointments = await Appointment.findOne({appointmentID : id}).exec()
+    const appointments = await Appointment.findById(id).exec()
     return appointments
 }
 
@@ -10,7 +10,7 @@ export const update = async (updatedAppointment, id) => {
     // try{
 
 
-        const appointment = await Appointment.findOneAndUpdate({appointmentID : id}, updatedAppointment).exec()
+        const appointment = await Appointment.findByIdAndUpdate(id, updatedAppointment).exec()
         console.log("appointment", appointment)
         // if (!appointment) {
         //     throw new Error('Appointment not found');
@@ -28,8 +28,8 @@ export const save = async (newAppointment) => {
 }
 
 export const remove = async (id, body) => {
-    await Appointment.updateOne(
-        {appointmentID: id},
+    await Appointment.findByIdAndUpdate(
+        id,
         {$set : body}
         ).exec()
 }
