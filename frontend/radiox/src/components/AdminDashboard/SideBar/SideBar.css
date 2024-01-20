@@ -1,0 +1,131 @@
+/* Sidebar.css */
+
+
+.sideBar {
+  width: 60px;
+  height: 128vh;
+  background-color: #333; 
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+
+.expanded {
+  width: 180px;
+}
+
+
+.toggle-btn {
+  cursor: pointer;
+  font-size: 30px;
+  padding: 10px;
+  transition: padding 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.toggle-btn:hover {
+  padding-left: 15px;
+  color: #00bcd4; 
+}
+
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+
+.nav-item {
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  background-color: #555; 
+  transform: scale(1.05);
+}
+
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.nav-button {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nav-button:hover {
+  background-color: #555; 
+  transform: scale(1.05);
+}
+
+
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.admin-photo {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+
+.admin-username {
+  color: #fff;
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.nav-buttons {
+  margin-top: 30px;
+}
+
+.light .sideBar {
+  background-color: #f4f4f4; 
+  color: #333;
+}
+
+.light .toggle-btn:hover {
+  color: #00796b; 
+}
+
+.light .nav-item:hover {
+  background-color: #e0e0e0; 
+}
+
+.light .nav-button:hover {
+  background-color: #e0e0e0; 
+}
+
+.clinic-logo {
+  margin-top: 20px; 
+  text-align: center;
+}
+
+.clinic-logo img {
+  width: 80px; 
+  height: 80px; 
+  border-radius: 0%; 
+  box-shadow: 0 0 10px rgba(132, 30, 30, 0.1); 
+}

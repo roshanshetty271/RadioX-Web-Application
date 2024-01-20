@@ -1,0 +1,93 @@
+/* SignUpPage.css */
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    background-color: rgb(11, 36, 52);
+    padding-bottom: 110px;
+    padding-left: 180px;
+    padding-bottom: 350px;
+}
+
+.signup-page form {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow the columns to wrap to the next row */
+    justify-content: space-between;
+    max-width: 800px;
+    /* Increased max-width for better spacing */
+    width: 100%;
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-right: 70px;
+    /* Add some space between the left and right columns */
+}
+
+.bottom-column {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.signup-page label {
+    margin-bottom: 5px;
+    color: white;
+}
+
+.radiox-logo {
+    height: 130px;
+    /* Set the height as needed */
+    width: auto;
+    /* Allow the width to adjust based on the height */
+    margin-bottom: 20px;
+    position: relative;
+    top: 10px;
+    left: -215px;
+}
+
+.signup-page input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(219, 223, 226);
+}
+
+.form-column select {
+    width: 107%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(219, 223, 226);
+}
+
+.bottom-column button {
+    background-color: #ff7869;
+    color: white;
+    padding: 15px;
+    margin-right: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    height: 55px;
+    position: relative;
+    top: 310px;
+    right: 450px;
+}

@@ -1,0 +1,137 @@
+/* Doctor.css */
+
+.doctor {
+  height: 122vh;
+  width: 205vh;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.button-container {
+  margin-top: 10px;
+  margin-bottom: 20px; /* Add margin-bottom to increase the gap */
+}
+
+.add-doctor-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 10px;
+  align-self: flex-end; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-doctor-button:hover {
+  background-color: #45a049;
+}
+
+.update-doctor-button {
+  background-color: #007bff; 
+  color: white;
+  padding: 10px 15px;
+  margin-top: 10px;
+  align-self: flex-end; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.delete-doctor-button {
+  background-color: #dc3545; 
+  color: white;
+  padding: 10px 15px;
+  margin-top: 10px;
+  align-self: flex-end; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.doctor h2 {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 470px;
+  font-size: 30px;
+  font-weight: bolder;
+  display: inline-block;
+}
+
+.doctor-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.doctor-details label {
+  font-weight: bold;
+}
+
+.doctor-details span {
+  color: #555;
+}
+
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 50px;
+}
+
+.doctor-table th, .doctor-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.doctor-table th {
+  background-color: #f2f2f2;
+}
+
+.add-form {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: none;
+  /* height: 10px; */
+}
+
+.add-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.add-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-form.visible {
+  display: block;
+}
+
+.add-form button:hover {
+  background-color: #45a049;
+}

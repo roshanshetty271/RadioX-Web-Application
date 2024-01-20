@@ -1,0 +1,49 @@
+.time-slot-list-container {
+    overflow-y: scroll;
+    height: 300px;
+    /* border: 1px solid #ccc; */
+    padding: 10px 0;
+    margin: 1rem;
+  }
+  
+  .time-slot-list-container h3 {
+    margin-bottom: 10px;
+  }
+  
+  .time-slot-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .time-slot {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0.5rem;
+    border: 1px solid #686767;
+  }
+
+  .selected{
+    background-color: #1087ff;
+  }
+
+  .checkout-btn-container{
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .checkout-btn{
+    width: 70%;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ff7869;
+    border: none;
+    color: #ffffff;
+    font-size: large;
+    font-weight: 700;
+    border-radius: 10px;
+  }

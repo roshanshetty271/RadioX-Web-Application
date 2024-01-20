@@ -1,0 +1,102 @@
+.paymentDialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #0a1823;
+    color: #ffffff;
+    z-index: 2;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0.8); /* Initial scale for animation */
+  
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    animation: fadeIn 0.5s ease-out forwards; /* Fade-in animation */
+    height: 500px;
+  }
+  
+  .paymentDialog.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Show with fade-in effect */
+  }
+  
+  .paymentDialog-title {
+    color: #24d31f;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .paymentDialog p {
+    margin: 10px 0;
+  }
+
+  .paymentDialog-info{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .paymentDialog-info p:nth-child(2){
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+
+  .paymentDialog>p{
+    position: absolute;
+    /* bottom: 10% */
+  }
+
+  .paymentDialog-btns button{
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  .paymentDialog-btns {
+    margin-top: 20px;
+  }
+  
+  .paymentDialog-btns button {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .paymentDialog-btns button.email-receipt {
+    background-color: #24d31f;
+    color: #ffffff;
+  }
+  
+  .paymentDialog-btns button.email-receipt:hover {
+    background-color: #1c9d18;
+  }
+  
+  .paymentDialog-btns button.home {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .paymentDialog-btns button.home:hover {
+    background-color: #0056b3;
+  }
+  
+  
