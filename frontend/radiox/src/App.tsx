@@ -1,18 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux"; // Import Provider
-import { store }  from "./app/store"; // Import your Redux store
+// @ts-ignore
+import { store } from "./app/store"; // Import your Redux store
 import "./App.css";
 import Home from "./pages/home";
 import LoginScreen from "./components/Home/Login/Loginscreen";
+// @ts-ignore
 import ContactScreen from './components/Home/Contact/contactus';
+// @ts-ignore
 import SignUpPage from "./components/Home/SignUp/SignUpPage";
+// @ts-ignore
 import PatientUI from "./components/Home/Patient/PatientUI";
+// @ts-ignore
 import MyAppointments from "./components/Home/Patient/MyAppointments";
 import AppointmentPage from "./pages/appointment";
+// @ts-ignore
 import Checkout from "./components/Appointment/Checkout/checkout";
+// @ts-ignore
 import EmailTest from "./components/Appointment/EmailTest/EmailTest";
 import DoctorDashboard from "./pages/DoctorDashboard";
+// @ts-ignore
 import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {

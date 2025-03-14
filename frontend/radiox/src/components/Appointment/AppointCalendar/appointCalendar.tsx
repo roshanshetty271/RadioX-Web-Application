@@ -21,7 +21,12 @@ interface AppointmentSlot {
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-function AppointCalendar() {
+// Define component props
+interface AppointCalendarProps {
+  onTimeslotSelect?: (slot: any) => void;
+}
+
+function AppointCalendar({ onTimeslotSelect }: AppointCalendarProps) {
   const [selectedDate, setSelectedDate] = useState<Value>(new Date());
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [selectedDoctor, setSelectedDoctor] = useState<string>("");
@@ -48,16 +53,15 @@ function AppointCalendar() {
       // Create slots with random availability
       timeSlots.forEach((time, index) => {
         // Random availability - 70% chance of being available
-        const isAvailable = Math.random() > 0.3;
+        const isAvailable = Math.random() < 0.7;
         
+        // Create slot
         slots.push({
-          id: index + 1,
+          id: index,
           time,
           isAvailable,
-          doctor: !isAvailable ? doctors[Math.floor(Math.random() * doctors.length)] : undefined,
-          location: !isAvailable ? 
-            ['New York', 'Boston', 'Chicago', 'Los Angeles'][Math.floor(Math.random() * 4)] : 
-            undefined
+          doctor: selectedDoctor || undefined,
+          location: selectedCity || undefined
         });
       });
       
@@ -65,10 +69,12 @@ function AppointCalendar() {
     }
   }, [selectedDate, selectedCity, selectedDoctor]);
   
-    const handleButtonClick = (city: string) => {
-      setSelectedCity(city);
+  // Handle button click for city selection
+  const handleButtonClick = (city: string) => {
+    setSelectedCity(city);
   };
-
+  
+  // Handle doctor dropdown selection
   const handleDoctorSelect = (doctor: string) => {
     setSelectedDoctor(doctor);
   };
@@ -81,6 +87,9 @@ function AppointCalendar() {
     if (!slot.isAvailable) {
       setSelectedUnavailableSlot(slot.time);
       setShowUnavailableMessage(true);
+    } else if (onTimeslotSelect) {
+      // Call the onTimeslotSelect callback when an available slot is clicked
+      onTimeslotSelect(slot);
     }
   };
 
@@ -111,69 +120,61 @@ function AppointCalendar() {
     <div className="appointment-parent">
       <div className="appointment-header">
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
-          <h1>Schedule Your Appointment</h1>
+          <img src={logo} alt="RadioX Logo" className="logo" />
+          <h1>Appointment Scheduler</h1>
         </div>
       </div>
-
+      
       <div className="appointment-container">
         <div className="left-container">
-          <div className="section-title">Select City</div>
+          <h2 className="section-title">Select Location</h2>
           <div className="city-buttons">
-            <CityButton city="New York" onClick={handleButtonClick} isSelected={selectedCity === 'New York'} />
-            <CityButton city="Boston" onClick={handleButtonClick} isSelected={selectedCity === 'Boston'} />
-            <CityButton city="Chicago" onClick={handleButtonClick} isSelected={selectedCity === 'Chicago'} />
-            <CityButton city="Los Angeles" onClick={handleButtonClick} isSelected={selectedCity === 'Los Angeles'} />
-          </div>        
-
-          <div className="section-title">Select Doctor</div>
+            <CityButton city="New York" onClick={handleButtonClick} isSelected={selectedCity === "New York"} />
+            <CityButton city="Los Angeles" onClick={handleButtonClick} isSelected={selectedCity === "Los Angeles"} />
+            <CityButton city="Chicago" onClick={handleButtonClick} isSelected={selectedCity === "Chicago"} />
+            <CityButton city="Houston" onClick={handleButtonClick} isSelected={selectedCity === "Houston"} />
+          </div>
+          
+          <h2 className="section-title">Select Doctor</h2>
           <DoctorDropdown doctors={doctors} onSelect={handleDoctorSelect} />
-
-          <div className="section-title">Select Time Slot</div>
-          <TimeSlotList 
-            timeSlots={timeSlots} 
-            selectedDate={getCurrentDate()}
-            selectedDoctor={selectedDoctor || undefined}
-            selectedCity={selectedCity || undefined}
-          />
+          
+          <div className="calendar-container">
+            <h2 className="section-title">Select Date</h2>
+            <Calendar
+              onChange={handleCalendarChange}
+              value={selectedDate}
+              className="modern-calendar"
+              minDate={new Date()}
+            />
+          </div>
         </div>
         
         <div className="right-container">
           <div className="calendar-header">
-            <div className="section-title">Select Date</div>
-            <div className="selected-date">{getFormattedDate()}</div>
-          </div>
-          <div className="calendar-container">
-            <Calendar 
-              onChange={handleCalendarChange} 
-              value={selectedDate} 
-              minDate={new Date()}
-              className="modern-calendar"
-            />
-          </div>
-          
-          <div className="availability-legend">
-            <div className="legend-item">
-              <div className="legend-color available"></div>
-              <span>Available</span>
-            </div>
-            <div className="legend-item">
-              <div className="legend-color unavailable"></div>
-              <span>Unavailable</span>
+            <h2 className="selected-date">{getFormattedDate()}</h2>
+            <div className="availability-legend">
+              <div className="legend-item">
+                <div className="legend-color available"></div>
+                <span>Available</span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-color unavailable"></div>
+                <span>Unavailable</span>
+              </div>
             </div>
           </div>
           
           <div className="day-schedule">
-            <div className="section-title">Today's Schedule</div>
+            <h2 className="section-title">Available Time Slots</h2>
             <div className="time-slots-grid">
-              {availableSlots.map(slot => (
-                <div 
-                  key={slot.id} 
+              {availableSlots.map((slot) => (
+                <div
+                  key={slot.id}
                   className={`time-slot-item ${slot.isAvailable ? 'available' : 'unavailable'}`}
                   onClick={() => handleSlotClick(slot)}
                 >
                   {slot.time}
-                  {!slot.isAvailable && <span className="booked-indicator">•</span>}
+                  {!slot.isAvailable && <div className="booked-indicator">Booked</div>}
                 </div>
               ))}
             </div>
@@ -184,9 +185,8 @@ function AppointCalendar() {
       {showUnavailableMessage && (
         <div className="appointment-details-modal">
           <div className="appointment-details-content">
-            <h3>Time Slot Not Available</h3>
-            <p>This time slot ({selectedUnavailableSlot}) is already booked.</p>
-            <p>Please select a different time or date for your appointment.</p>
+            <h3>Slot Not Available</h3>
+            <p>The time slot at {selectedUnavailableSlot} is already booked. Please select another time slot.</p>
             <button onClick={handleCloseMessage}>Close</button>
           </div>
         </div>

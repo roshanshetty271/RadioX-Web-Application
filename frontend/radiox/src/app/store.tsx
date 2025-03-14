@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UserState {
   name: string;
@@ -26,14 +26,13 @@ const userSlice = createSlice({
     email: '',
   } as UserState,
   reducers: {
-    setUserData: (state, action) => {
+    setUserData: (state: UserState, action: { payload: Partial<UserState> }) => {
       return { ...state, ...action.payload };
     },
   },
 });
 
 export const { setUserData } = userSlice.actions;
-export const selectUserData = (state: RootState) => state.user;
 
 const rootReducer = {
   user: userSlice.reducer,
@@ -43,4 +42,8 @@ export const store = configureStore({
   reducer: rootReducer,
 });
 
+// Define RootState type
 export type RootState = ReturnType<typeof store.getState>;
+
+// Define selector after RootState is defined
+export const selectUserData = (state: RootState) => state.user;

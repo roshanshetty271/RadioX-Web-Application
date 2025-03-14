@@ -11,7 +11,8 @@ import ImageIcon from '@mui/icons-material/Image';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 
 // Import the DicomViewer component
-import DicomViewer from '../components/DicomViewer/DicomViewer';
+// @ts-ignore
+const DicomViewer = require('../components/DicomViewer/DicomViewer').default;
 
 // Add interface for medical report
 interface MedicalReport {

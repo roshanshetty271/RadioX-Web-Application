@@ -1,10 +1,13 @@
-import React from 'react';
-import Navbar from '../components/Home/NavBar/Navbar';
+import React, { useState } from "react";
+import Navbar from "../components/Home/NavBar/Navbar";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 import AppointCalendar from '../components/Appointment/AppointCalendar/appointCalendar';
-import { Container, Box, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 
 function Appointment() {
+  const [selectedTimeslot, setSelectedTimeslot] = useState(null);
   const navigate = useNavigate();
 
   const handleBackToProfile = () => {
@@ -12,21 +15,45 @@ function Appointment() {
   };
 
   return (
-    <>
+    <div className="appointment">
       <Navbar />
-      <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
-        <Box display="flex" justifyContent="flex-end" mb={2}>
-          <Button 
-            variant="outlined" 
-            color="primary" 
-            onClick={handleBackToProfile}
+      <Container style={{ marginTop: "2rem" }}>
+        <Box
+          sx={{
+            marginBottom: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <h1>Schedule Appointment</h1>
+        </Box>
+        <AppointCalendar
+          onTimeslotSelect={(slot: any) => setSelectedTimeslot(slot)}
+        />
+        <Box
+          sx={{
+            marginTop: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            disabled={!selectedTimeslot}
+            onClick={() => {
+              navigate("/checkout", {
+                state: { selectedTimeslot },
+              });
+            }}
           >
-            Back to Profile
+            Continue to Checkout
           </Button>
         </Box>
-        <AppointCalendar />
       </Container>
-    </>
+    </div>
   );
 }
 

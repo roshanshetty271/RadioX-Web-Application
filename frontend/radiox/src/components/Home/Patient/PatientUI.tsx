@@ -74,7 +74,7 @@ const PatientUI: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUpdatedUserData((prevData) => ({ ...prevData, [name]: value }));
+    setUpdatedUserData((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
   const handleUpdateProfile = () => {

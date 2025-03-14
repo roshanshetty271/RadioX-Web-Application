@@ -32,7 +32,35 @@ const AppContainer: React.FC = () => {
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('patient');
   const [errorMessage, setErrorMessage] = useState('');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  
+  // Define image array with error handling
   const images = [Image1, Image2, Image3];
+
+  // Preload images to ensure they're available before displaying
+  useEffect(() => {
+    const preloadImages = async () => {
+      try {
+        const promises = images.map((src) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+        });
+        
+        await Promise.all(promises);
+        setImagesLoaded(true);
+      } catch (error) {
+        console.error('Error preloading images:', error);
+        // Continue even if image loading fails
+        setImagesLoaded(true);
+      }
+    };
+    
+    preloadImages();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -117,11 +145,19 @@ const AppContainer: React.FC = () => {
   return (
     <div className="app-container">
       <Link to="/">
-        <img src={NavLogo} alt="RadioX Logo" className="nav-logo" />
+        <img 
+          src={NavLogo} 
+          alt="RadioX Logo" 
+          className="nav-logo" 
+          onError={(e) => {
+            e.currentTarget.onerror = null; 
+            e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzMzMyI+UmFkaW9YPC90ZXh0Pjwvc3ZnPg==';
+          }}
+        />
       </Link>
       
       <div className="slideshow-container">
-        {images.map((image, index) => (
+        {imagesLoaded && images.map((image, index) => (
           <div
             key={index}
             className={`slide ${index === currentImage ? 'active' : ''}`}
