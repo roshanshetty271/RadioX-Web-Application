@@ -4,6 +4,9 @@ import * as doctorController from '../controllers/doctor-controller.js';
 
 const router = express.Router();
 
+// Get all doctors
+router.route('/').get(doctorController.getAllDoctors);
+
 // Create a new doctor
 router.route('/').post(doctorController.registerDoctor);
 

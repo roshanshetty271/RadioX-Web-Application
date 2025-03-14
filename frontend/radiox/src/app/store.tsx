@@ -1,5 +1,3 @@
-
-
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 interface UserState {
@@ -11,6 +9,7 @@ interface UserState {
   symptoms: string;
   username: string;
   password: string;
+  email: string;
 }
 
 const userSlice = createSlice({
@@ -24,6 +23,7 @@ const userSlice = createSlice({
     symptoms: '',
     username: '',
     password: '',
+    email: '',
   } as UserState,
   reducers: {
     setUserData: (state, action) => {

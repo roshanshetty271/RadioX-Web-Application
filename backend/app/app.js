@@ -3,23 +3,24 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import registerRoutes from './routes/index.js';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const initialize = (app) => {
-  console.log('Here')
-  // MongoDB URI
-  const mongoDBURI = 'mongodb+srv://shettyaayu:CAw8PmtbGCabGGZN@cluster0.7yywkny.mongodb.net/MasterDb?retryWrites=true&w=majority';
+  console.log('Initializing app...')
+  // MongoDB URI - use environment variable
+  const mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/MasterDb';
 
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // MongoDB connection
-  mongoose.connect(mongoDBURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  // MongoDB connection - remove deprecated options
+  mongoose.connect(mongoDBURI)
   .then(() => {
-    console.log(`Connected to MongoDB Atlas at ${mongoDBURI}`);
+    console.log(`Connected to MongoDB at ${mongoDBURI.replace(/mongodb:\/\/([^:]+):[^@]+@/, 'mongodb://$1:****@')}`);
   })
   .catch((err) => {
     console.error(`MongoDB connection error: ${err}`);
@@ -31,7 +32,7 @@ const initialize = (app) => {
 
   // Successfully connected
   db.on('connected', () => {
-    console.log(`Connected to MongoDB Atlas at ${mongoDBURI}`);
+    console.log(`Connected to MongoDB at ${mongoDBURI.replace(/mongodb:\/\/([^:]+):[^@]+@/, 'mongodb://$1:****@')}`);
   });
 
   // Connection error

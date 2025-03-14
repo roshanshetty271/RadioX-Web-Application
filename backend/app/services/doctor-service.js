@@ -124,3 +124,19 @@ export const updateRemarks = async (doctorId, patientId, remarks, patientScansDo
     throw new Error(`Error updating remarks: ${error.message}`);
   }
 };
+
+// Add new function to get all doctors
+export const getAllDoctors = async () => {
+  try {
+    const doctors = await Doctor.find();
+    console.log(`Found ${doctors.length} doctors in the database`);
+    // Return a structured response
+    return { 
+      message: 'Doctors retrieved successfully',
+      doctors: doctors 
+    };
+  } catch (error) {
+    console.error('Error fetching doctors:', error.message);
+    throw new Error('Error fetching doctors');
+  }
+};

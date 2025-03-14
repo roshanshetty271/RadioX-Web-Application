@@ -1,6 +1,10 @@
 // ./server.js
 import express from 'express';
 import initialize from './backend/app/app.js';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;

@@ -105,3 +105,15 @@ export const updateRemarks = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+
+// Add new controller function to get all doctors
+export const getAllDoctors = async (req, res) => {
+  try {
+    const result = await doctorService.getAllDoctors();
+    console.log('Returning doctors data:', result);
+    setResponse(result, res);
+  } catch (error) {
+    console.error('Error in getAllDoctors controller:', error);
+    setErrorResponse(error, res);
+  }
+};

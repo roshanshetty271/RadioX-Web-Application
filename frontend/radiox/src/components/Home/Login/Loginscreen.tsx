@@ -12,11 +12,26 @@ const textData = [
   "Instant access to any of our intelligence tools",
 ];
 
+// Hardcoded admin and doctor credentials for demo
+const adminCredentials = {
+  username: 'admin',
+  password: 'admin123'
+};
+
+const doctorCredentials = [
+  { username: 'doctor1', password: 'doctor123', name: 'Dr. John Doe' },
+  { username: 'doctor2', password: 'doctor123', name: 'Dr. Jane Smith' }
+];
+
 const AppContainer: React.FC = () => {
   const navigate = useNavigate();
 
   const [currentImage, setCurrentImage] = useState(0);
-  const [error, setError] = useState(false); // New state for error
+  const [error, setError] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('patient');
+  const [errorMessage, setErrorMessage] = useState('');
   const images = [Image1, Image2, Image3];
 
   useEffect(() => {
@@ -33,28 +48,68 @@ const AppContainer: React.FC = () => {
 
   const handleLoginSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setError(false); // Reset error status
+    setError(false);
+    setErrorMessage('');
 
-    // Retrieve the stored credentials from local storage
+    // First, check if it's an admin login
+    if (userType === 'admin') {
+      if (username === adminCredentials.username && password === adminCredentials.password) {
+        // Store admin information in local storage
+        localStorage.setItem('userRole', 'admin');
+        localStorage.setItem('username', username);
+        
+        // Navigate to admin dashboard (you'll need to create this route and component)
+        navigate('/admin');
+        return;
+      } else {
+        setError(true);
+        setErrorMessage('Invalid admin credentials');
+        return;
+      }
+    }
+    
+    // Next, check if it's a doctor login
+    if (userType === 'doctor') {
+      const doctorUser = doctorCredentials.find(
+        doctor => doctor.username === username && doctor.password === password
+      );
+      
+      if (doctorUser) {
+        // Store doctor information in local storage
+        localStorage.setItem('userRole', 'doctor');
+        localStorage.setItem('username', username);
+        localStorage.setItem('doctorName', doctorUser.name);
+        
+        // Navigate to doctor dashboard (you'll need to create this route and component)
+        navigate('/doctor');
+        return;
+      } else {
+        setError(true);
+        setErrorMessage('Invalid doctor credentials');
+        return;
+      }
+    }
+    
+    // Finally, handle patient login
     const storedCredentialsString = localStorage.getItem('userCredentials');
 
     if (storedCredentialsString) {
       const storedCredentials = JSON.parse(storedCredentialsString);
 
-      // Check if the entered credentials are valid
-      const enteredUsername = (event.target as any).username.value;
-      const enteredPassword = (event.target as any).password.value;
-
-      if (storedCredentials.username === enteredUsername && storedCredentials.password === enteredPassword) {
-        // Store user information in local storage
+      if (storedCredentials.username === username && storedCredentials.password === password) {
+        // Store patient information in local storage
+        localStorage.setItem('userRole', 'patient');
         localStorage.setItem('username', storedCredentials.username);
 
-        // Navigate to /patient
+        // Navigate to patient dashboard
         navigate('/patient');
       } else {
-        setError(true); // Set error status for invalid credentials
+        setError(true);
+        setErrorMessage('Invalid username or password');
       }
     } else {
+      setError(true);
+      setErrorMessage('No patient accounts found. Please sign up first');
       console.log('No user credentials found');
     }
   };
@@ -62,8 +117,9 @@ const AppContainer: React.FC = () => {
   return (
     <div className="app-container">
       <Link to="/">
-        <img src={NavLogo} alt="NavLogo" className="nav-logo" />
+        <img src={NavLogo} alt="RadioX Logo" className="nav-logo" />
       </Link>
+      
       <div className="slideshow-container">
         {images.map((image, index) => (
           <div
@@ -71,9 +127,11 @@ const AppContainer: React.FC = () => {
             className={`slide ${index === currentImage ? 'active' : ''}`}
             style={{ backgroundImage: `url(${image})` }}
           >
-            <div className="image-text">
-              {index === currentImage && textData[currentImage]}
-            </div>
+            {index === currentImage && (
+              <div className="image-text">
+                {textData[currentImage]}
+              </div>
+            )}
           </div>
         ))}
         <div className="dots">
@@ -82,29 +140,68 @@ const AppContainer: React.FC = () => {
               key={index}
               className={index === currentImage ? 'active' : ''}
               onClick={() => handleDotClick(index)}
+              aria-label={`Slide ${index + 1}`}
             />
           ))}
         </div>
       </div>
+      
       <div className="login-container">
         <h2>Login to RadioX</h2>
-        {/* Display error message if error state is true */}
-        {error && <div className="error-message">Invalid username or password</div>}
+        
+        {error && <div className="error-message">{errorMessage || 'Invalid username or password'}</div>}
+        
         <form onSubmit={handleLoginSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input type="text" id="username" name="username" />
+            <label htmlFor="userType">Login As:</label>
+            <select 
+              id="userType" 
+              className="user-type-select"
+              value={userType}
+              onChange={(e) => setUserType(e.target.value)}
+            >
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="admin">Administrator</option>
+            </select>
           </div>
+          
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          
           <div className="form-group">
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" />
+            <input 
+              type="password" 
+              id="password" 
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </div>
+          
           <div className="form-group">
             <button type="submit">Login</button>
           </div>
         </form>
+        
         <div className="signup-link">
-          Don't have an account? <Link to="/signup">Sign Up </Link>
+          {userType === 'patient' && (
+            <>Don't have an account? <Link to="/signup">Sign Up</Link></>
+          )}
+          {userType !== 'patient' && (
+            <span className="login-note">Please contact administrator for {userType} account access</span>
+          )}
         </div>
       </div>
     </div>

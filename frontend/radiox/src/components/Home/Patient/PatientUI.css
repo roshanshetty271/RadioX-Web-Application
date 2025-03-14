@@ -246,3 +246,45 @@
 .profile-box form button:hover {
     background-color: #0051ff;
 }
+
+/* Appointment container styling */
+.appointment-container {
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.appointment-container .appointment-scheduler {
+    max-width: 100%;
+    padding: 0;
+}
+
+.appointment-container .scheduler-container {
+    gap: 15px;
+}
+
+.appointment-container .scheduler-section {
+    margin-bottom: 15px;
+}
+
+/* Make appointment scheduler responsive within patient UI */
+@media (max-width: 1200px) {
+    .appointment-container .scheduler-container {
+        flex-direction: column;
+    }
+    
+    .appointment-container .scheduler-left,
+    .appointment-container .scheduler-right {
+        width: 100%;
+    }
+}
+
+/* Profile columns for better layout */
+.profile-column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-column > div {
+    width: 48%;
+}

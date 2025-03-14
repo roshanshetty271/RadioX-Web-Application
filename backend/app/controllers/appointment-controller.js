@@ -1,6 +1,26 @@
 import * as appointmentService from '../services/appointment-service.js'
 import {setResponse, setErrorResponse} from './response-handler.js';
 
+export const getAllAppointments = async (request, response) => {
+    try {
+        const patientId = request.query.patientId;
+        let appointments;
+
+        if (patientId) {
+            // If patientId query param is provided, filter by patientID
+            appointments = await appointmentService.findByPatientId(patientId);
+        } else {
+            // Otherwise get all appointments
+            appointments = await appointmentService.findAll();
+        }
+        
+        setResponse(appointments, response);
+    } catch (err) {
+        console.log(err);
+        setErrorResponse(err, response);
+    }
+};
+
 export const getAppointment = async (request, response) => {
     try{
         const id = request.params.id;
